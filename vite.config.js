@@ -4,6 +4,7 @@ import Icons from 'unplugin-icons/vite'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  base: './',
   plugins: [
     svelte(),
     Icons({
