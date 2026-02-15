@@ -2,6 +2,7 @@
   import IconAndroid from "~icons/material-symbols/android";
   import Navbar from "./lib/components/Navbar.svelte";
   import Hero from "./lib/components/Hero.svelte";
+  import Footer from "./lib/components/Footer.svelte";
 </script>
 
 <Navbar />
@@ -11,3 +12,5 @@
 >
   <Hero />
 </main>
+
+<Footer />
