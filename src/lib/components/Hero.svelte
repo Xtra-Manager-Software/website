@@ -31,33 +31,36 @@
 </script>
 
 <section
-  class="relative min-h-[85dvh] flex flex-col items-center justify-center text-center px-4 py-8 md:py-12 overflow-hidden select-none cursor-default"
+  class="relative min-h-[90dvh] flex flex-col items-center justify-center text-center px-4 py-16 md:py-24 overflow-hidden select-none cursor-default"
 >
   <div class="absolute inset-0 -z-10 overflow-hidden">
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] opacity-30 animate-pulse"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-primary/20 rounded-full blur-[100px] md:blur-[120px] opacity-30 animate-pulse"
     ></div>
   </div>
 
   <div
-    class="max-w-4xl mx-auto flex flex-col items-center gap-2 md:gap-4 relative z-10"
+    class="max-w-4xl mx-auto flex flex-col items-center gap-6 md:gap-8 lg:gap-10 relative z-10"
   >
     <div
-      class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline/10 text-sm font-medium text-on-surface-variant hover:bg-surface-container-high/80 transition-colors cursor-default animate-in slide-in-from-bottom-2 fade-in duration-500"
+      class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-surface-container-high border border-outline/10 text-xs md:text-sm font-medium text-on-surface-variant hover:bg-surface-container-high/80 transition-colors cursor-default animate-in slide-in-from-bottom-2 fade-in duration-500"
     >
       <span class="w-2 h-2 rounded-full bg-primary/80 animate-pulse"></span>
-      Open Source • Practical • Collaborative
+      <span class="hidden sm:inline"
+        >Open Source • Practical • Collaborative</span
+      >
+      <span class="sm:hidden">Open Source</span>
     </div>
 
     <h1
-      class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-on-surface animate-in slide-in-from-bottom-4 fade-in duration-700 delay-100"
+      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight text-on-surface animate-in slide-in-from-bottom-4 fade-in duration-700 delay-100"
     >
-      Build programs that are <br class="hidden md:block" />
+      Build programs that are <br class="hidden sm:block" />
       <span class="text-primary">actually useful.</span>
     </h1>
 
     <p
-      class="text-base md:text-xl text-on-surface-variant max-w-2xl leading-normal md:leading-relaxed animate-in slide-in-from-bottom-6 fade-in duration-700 delay-200"
+      class="text-sm md:text-base lg:text-xl text-on-surface-variant max-w-3xl leading-relaxed animate-in slide-in-from-bottom-6 fade-in duration-700 delay-200"
     >
       Xtra Manager Software Community focuses on designing maintainable,
       real-world solutions—not just trends. We build practical tools driven by
@@ -65,70 +68,74 @@
     </p>
 
     <div
-      class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-300"
+      class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none animate-in slide-in-from-bottom-8 fade-in duration-700 delay-300"
     >
       <a
         href="https://t.me/XtraManagerSoftware"
         target="_blank"
         rel="noopener noreferrer"
-        class="bg-primary text-on-primary hover:bg-primary/90 px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
+        class="w-full sm:w-auto bg-primary text-on-primary hover:bg-primary/90 px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
       >
-        Join Community
+        Explore Project
       </a>
 
       <a
         href="https://github.com/Xtra-Manager-Software"
-        class="bg-surface-container-high text-on-surface hover:bg-on-surface/5 border border-outline/10 px-8 py-3.5 rounded-full font-medium transition-colors inline-flex items-center gap-2"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full sm:w-auto bg-surface-container-high text-on-surface hover:bg-on-surface/5 border border-outline/10 px-8 py-3.5 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
       >
-        <IconGithub class="text-xl text-white" />
-        Explore Projects
+        See More
       </a>
     </div>
 
     <div
-      class="grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 md:gap-16 mt-16 pt-8 border-t border-outline/10 w-full animate-in fade-in duration-1000 delay-500"
+      class="grid grid-cols-4 gap-2 md:gap-8 lg:gap-16 mt-16 md:mt-24 pt-8 border-t border-outline/10 w-full animate-in fade-in duration-1000 delay-500"
     >
-      <div class="flex flex-col items-center gap-1">
-        <span class="text-2xl md:text-3xl font-bold text-on-surface">100%</span>
+      <div class="flex flex-col items-center gap-0.5 md:gap-1">
+        <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
+          >100%</span
+        >
         <span
-          class="text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
+          class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
           >Open Source</span
         >
       </div>
-      <div class="flex flex-col items-center gap-1">
-        <span class="text-2xl md:text-3xl font-bold text-on-surface"
+      <div class="flex flex-col items-center gap-0.5 md:gap-1">
+        <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
           >Community</span
         >
         <span
-          class="text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
+          class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
           >Powered</span
         >
       </div>
-      <div class="flex flex-col items-center gap-1">
-        <span class="text-2xl md:text-3xl font-bold text-on-surface">Multi</span
+      <div class="flex flex-col items-center gap-0.5 md:gap-1">
+        <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
+          >Multi</span
         >
         <span
-          class="text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
+          class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
           >Platform</span
         >
       </div>
-      <div class="flex flex-col items-center gap-1">
-        <span class="text-2xl md:text-3xl font-bold text-on-surface">Free</span>
+      <div class="flex flex-col items-center gap-0.5 md:gap-1">
+        <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
+          >Free</span
+        >
         <span
-          class="text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
+          class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
           >Forever</span
         >
       </div>
     </div>
 
-    <!-- Tech Stack Marquee -->
     <div
-      class="mt-16 w-full max-w-5xl overflow-hidden relative animate-in fade-in duration-1000 delay-700 mask-linear-gradient"
+      class="mt-16 md:mt-24 w-full max-w-5xl overflow-hidden relative animate-in fade-in duration-1000 delay-700 mask-linear-gradient"
     >
       <div class="flex w-max">
-        <!-- List 1 -->
         <div
-          class="flex gap-12 items-center animate-scroll whitespace-nowrap px-6"
+          class="flex gap-8 md:gap-12 items-center animate-scroll whitespace-nowrap px-6"
         >
           {#each techStack as tech}
             <div
@@ -139,9 +146,8 @@
             </div>
           {/each}
         </div>
-        <!-- List 2 (Duplicate for infinite scroll) -->
         <div
-          class="flex gap-12 items-center animate-scroll whitespace-nowrap px-6"
+          class="flex gap-8 md:gap-12 items-center animate-scroll whitespace-nowrap px-6"
           aria-hidden="true"
         >
           {#each techStack as tech}
@@ -155,34 +161,34 @@
       </div>
     </div>
   </div>
-
-  <style>
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-    .animate-scroll {
-      animation: scroll 40s linear infinite;
-    }
-    .mask-linear-gradient {
-      mask-image: linear-gradient(
-        to right,
-        transparent,
-        black 10%,
-        black 90%,
-        transparent
-      );
-      -webkit-mask-image: linear-gradient(
-        to right,
-        transparent,
-        black 10%,
-        black 90%,
-        transparent
-      );
-    }
-  </style>
 </section>
+
+<style>
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+  }
+  .mask-linear-gradient {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+</style>

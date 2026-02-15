@@ -1,35 +1,18 @@
 <script>
   import IconMenu from "~icons/material-symbols/menu-rounded";
   import IconClose from "~icons/material-symbols/close-rounded";
-  import IconLight from "~icons/material-symbols/wb-sunny-rounded";
-  import IconDark from "~icons/material-symbols/dark-mode-rounded";
+  import IconGithub from "~icons/simple-icons/github";
+
   import { onMount } from "svelte";
 
   let isMenuOpen = $state(false);
-  let isDark = $state(true);
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
   }
 
-  function toggleTheme() {
-    isDark = !isDark;
-    const theme = isDark ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }
-
   onMount(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      isDark = savedTheme === "dark";
-    } else {
-      isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    }
-    document.documentElement.setAttribute(
-      "data-theme",
-      isDark ? "dark" : "light",
-    );
+    document.documentElement.setAttribute("data-theme", "dark");
   });
 </script>
 
@@ -78,17 +61,15 @@
 
     <div class="flex items-center gap-2">
       <div class="hidden lg:flex items-center gap-2">
-        <button
-          onclick={toggleTheme}
+        <a
+          href="https://github.com/Xtra-Manager-Software"
+          target="_blank"
+          rel="noopener noreferrer"
           class="p-2.5 rounded-full hover:bg-on-surface/10 transition-transform hover:scale-105 active:scale-95 inline-flex items-center justify-center text-on-surface"
-          aria-label="Toggle theme"
+          aria-label="GitHub Organization"
         >
-          {#if isDark}
-            <IconLight class="text-xl" />
-          {:else}
-            <IconDark class="text-xl" />
-          {/if}
-        </button>
+          <IconGithub class="text-xl" />
+        </a>
       </div>
 
       <div class="lg:hidden">
@@ -148,21 +129,16 @@
         </li>
         <div class="h-px bg-outline/20 my-2"></div>
         <li>
-          <button
-            onclick={() => {
-              toggleTheme();
-              toggleMenu();
-            }}
-            class="w-full flex items-center justify-center gap-3 rounded-xl hover:bg-on-surface/10 py-3 px-4 font-medium transition-colors"
+          <a
+            href="https://github.com/Xtra-Manager-Software"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick={toggleMenu}
+            class="w-full flex items-center justify-center gap-3 rounded-xl hover:bg-on-surface/10 py-3 px-4 font-medium transition-colors text-on-surface"
           >
-            {#if isDark}
-              <IconLight class="text-xl" />
-              <span>Light Mode</span>
-            {:else}
-              <IconDark class="text-xl" />
-              <span>Dark Mode</span>
-            {/if}
-          </button>
+            <IconGithub class="text-xl" />
+            <span>GitHub</span>
+          </a>
         </li>
       </ul>
     </div>
