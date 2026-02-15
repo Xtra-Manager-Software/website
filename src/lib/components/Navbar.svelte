@@ -37,12 +37,11 @@
   <div
     class="bg-surface-container-high/90 backdrop-blur-xl text-on-surface rounded-full shadow-xl px-4 md:px-6 min-h-[3.5rem] md:min-h-[4rem] transition-all duration-300 flex items-center justify-between relative"
   >
-    <a
-      href="/"
-      class="font-bold tracking-tight hover:bg-on-surface/10 rounded-full px-3 py-2 md:px-4 text-base md:text-xl lg:text-2xl shrink-0 transition-colors inline-flex items-center"
+    <div
+      class="font-bold tracking-tight px-3 py-2 md:px-4 text-base md:text-xl lg:text-2xl shrink-0 inline-flex items-center select-none cursor-default"
     >
       <span class="text-primary">Xtra </span>ManagerSoftware
-    </a>
+    </div>
 
     <div class="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2">
       <ul class="flex flex-row gap-1 font-medium text-base list-none m-0 p-0">
