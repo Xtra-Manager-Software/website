@@ -1,43 +1,55 @@
-# Svelte + Vite
+<h1 align="center">
+    Xtra Manager Software Website
+</h1>
 
-This template should help get you started developing with Svelte in Vite.
+<p align="center">
+    <img src="https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&colorA=363A4F&logo=svelte&logoColor=D9E0EE">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&colorA=363A4F&logo=tailwind-css&logoColor=D9E0EE">
+    <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&colorA=363A4F&logo=vite&logoColor=D9E0EE">
+    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&colorA=363A4F&logo=javascript&logoColor=363A4F">
+</p>
 
-## Recommended IDE Setup
+---
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## About
 
-## Need an official Svelte framework?
+This is the **Official Website** for the **Xtra Manager Software Community**.  
+It serves as the central hub for our open-source projects, team information, and community resources.
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+Built with **Svelte** and **Tailwind CSS**, it embodies our philosophy of "building programs that are actually useful" through a clean, responsive, and performance-focused design.
 
-## Technical considerations
+---
 
-**Why use this over SvelteKit?**
+## Development Setup
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+### Prerequisites
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+- Node.js (v18+)
+- Bun (Preferred) or npm/pnpm
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+### Local Development
 
-**Why include `.vscode/extensions.json`?**
+1. Clone the repository:
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+   ```bash
+   git clone https://github.com/Xtra-Manager-Software/website.git
+   cd website
+   ```
 
-**Why enable `checkJs` in the JS template?**
+2. Install dependencies:
 
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
+   ```bash
+   bun install
+   ```
 
-**Why is HMR not preserving my local component state?**
+3. Start the dev server:
+   ```bash
+   bun dev
+   ```
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
+---
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+## License
 
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+This project is open-sourced software licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for more information.
