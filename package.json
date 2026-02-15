@@ -9,8 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@iconify-json/material-symbols": "^1.2.55",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "@tailwindcss/vite": "^4.1.18",
+    "daisyui": "^5.5.18",
     "svelte": "^5.45.2",
+    "unplugin-icons": "^23.0.1",
     "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "material-symbols": "^0.40.2"
   }
 }
