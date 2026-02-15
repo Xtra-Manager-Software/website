@@ -1,15 +1,39 @@
 <script>
   import IconMenu from "~icons/material-symbols/menu-rounded";
   import IconClose from "~icons/material-symbols/close-rounded";
+  import IconLight from "~icons/material-symbols/wb-sunny-rounded";
+  import IconDark from "~icons/material-symbols/dark-mode-rounded";
+  import { onMount } from "svelte";
 
   let isMenuOpen = $state(false);
+  let isDark = $state(true);
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
   }
+
+  function toggleTheme() {
+    isDark = !isDark;
+    const theme = isDark ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }
+
+  onMount(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      isDark = savedTheme === "dark";
+    } else {
+      isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDark ? "dark" : "light",
+    );
+  });
 </script>
 
-<nav class="fixed top-2 left-2 right-2 z-50">
+<nav class="fixed top-2 left-2 right-2 z-50 select-none cursor-default">
   <div
     class="bg-surface-container-high/90 backdrop-blur-xl text-on-surface rounded-full shadow-xl px-4 md:px-6 min-h-[3.5rem] md:min-h-[4rem] transition-all duration-300 flex items-center justify-between relative"
   >
@@ -55,12 +79,17 @@
 
     <div class="flex items-center gap-2">
       <div class="hidden lg:flex items-center gap-2">
-        <a
-          href="#get-started"
-          class="bg-primary text-on-primary hover:bg-primary/90 rounded-full px-6 py-2.5 font-medium transition-transform hover:scale-105 active:scale-95 inline-flex items-center justify-center"
+        <button
+          onclick={toggleTheme}
+          class="p-2.5 rounded-full hover:bg-on-surface/10 transition-transform hover:scale-105 active:scale-95 inline-flex items-center justify-center text-on-surface"
+          aria-label="Toggle theme"
         >
-          Get Started
-        </a>
+          {#if isDark}
+            <IconLight class="text-xl" />
+          {:else}
+            <IconDark class="text-xl" />
+          {/if}
+        </button>
       </div>
 
       <div class="lg:hidden">
@@ -90,7 +119,7 @@
           <a
             href="#features"
             onclick={toggleMenu}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors"
+            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Features</a
           >
         </li>
@@ -98,7 +127,7 @@
           <a
             href="#platform"
             onclick={toggleMenu}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors"
+            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Platform</a
           >
         </li>
@@ -106,7 +135,7 @@
           <a
             href="#team"
             onclick={toggleMenu}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors"
+            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Team</a
           >
         </li>
@@ -114,18 +143,27 @@
           <a
             href="#blog"
             onclick={toggleMenu}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors"
+            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Blog</a
           >
         </li>
         <div class="h-px bg-outline/20 my-2"></div>
         <li>
-          <a
-            href="#get-started"
-            onclick={toggleMenu}
-            class="block rounded-xl bg-primary text-on-primary hover:bg-primary/90 py-3 px-4 text-center font-medium transition-transform active:scale-95"
-            >Get Started</a
+          <button
+            onclick={() => {
+              toggleTheme();
+              toggleMenu();
+            }}
+            class="w-full flex items-center justify-center gap-3 rounded-xl hover:bg-on-surface/10 py-3 px-4 font-medium transition-colors"
           >
+            {#if isDark}
+              <IconLight class="text-xl" />
+              <span>Light Mode</span>
+            {:else}
+              <IconDark class="text-xl" />
+              <span>Dark Mode</span>
+            {/if}
+          </button>
         </li>
       </ul>
     </div>
