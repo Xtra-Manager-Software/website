@@ -68,7 +68,7 @@
       class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 animate-in slide-in-from-bottom-8 fade-in duration-700 delay-300"
     >
       <a
-        href="https://t.me/XtraManager"
+        href="https://t.me/XtraManagerSoftware"
         target="_blank"
         rel="noopener noreferrer"
         class="bg-primary text-on-primary hover:bg-primary/90 px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 inline-flex items-center gap-2 shadow-lg shadow-primary/20"
@@ -77,7 +77,7 @@
       </a>
 
       <a
-        href="#projects"
+        href="https://github.com/Xtra-Manager-Software"
         class="bg-surface-container-high text-on-surface hover:bg-on-surface/5 border border-outline/10 px-8 py-3.5 rounded-full font-medium transition-colors inline-flex items-center gap-2"
       >
         <IconGithub class="text-xl text-white" />
