@@ -3,17 +3,11 @@
   import IconClose from "~icons/material-symbols/close-rounded";
   import IconGithub from "~icons/simple-icons/github";
 
-  import { onMount } from "svelte";
-
   let isMenuOpen = $state(false);
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
   }
-
-  onMount(() => {
-    document.documentElement.setAttribute("data-theme", "dark");
-  });
 </script>
 
 <nav class="fixed top-2 left-2 right-2 z-50 select-none cursor-default">
@@ -30,9 +24,9 @@
       <ul class="flex flex-row gap-1 font-medium text-base list-none m-0 p-0">
         <li>
           <a
-            href="#features"
+            href="#"
             class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
-            >Features</a
+            >Home</a
           >
         </li>
         <li>
@@ -97,10 +91,10 @@
       >
         <li>
           <a
-            href="#features"
+            href="#"
             onclick={toggleMenu}
             class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
-            >Features</a
+            >Home</a
           >
         </li>
         <li>

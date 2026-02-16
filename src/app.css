@@ -20,14 +20,11 @@
   --color-surface: var(--surface);
   --color-onSurface: var(--onSurface);
   --color-surfaceContainer: var(--surfaceContainer);
-  --color-surfaceContainerHigh: var(--surfaceContainerHigh);
-  --color-surfaceVariant: var(--surfaceVariant);
-  --color-onSurfaceVariant: var(--onSurfaceVariant);
+  --color-surfaceContainerLow: var(--surfaceContainerLow);
+  --color-surfaceContainerLowest: var(--surfaceContainerLowest);
+  --color-surfaceContainerHighest: var(--surfaceContainerHighest);
   
-  --color-error: var(--error);
-  --color-onError: var(--onError);
-  
-  --color-outline: var(--outline);
+  --color-outlineVariant: var(--outlineVariant);
 }
 
 :root {
@@ -39,10 +36,12 @@
   --secondary: #e6c0a0;
   --onSecondary: #442b15;
   --secondaryContainer: #5d4129;
+  --onSecondaryContainer: #ffdcc5; 
   
   --tertiary: #d0c88c;
   --onTertiary: #363105;
   --tertiaryContainer: #4d481a;
+  --onTertiaryContainer: #ebe4a7; 
   
   --error: #ffb4ab;
   --onError: #690005;
@@ -52,12 +51,16 @@
   
   --surface: #19120d;
   --onSurface: #efe0d9;
+  --surfaceContainerLowest: #110d0a;
+  --surfaceContainerLow: #1e1610;
   --surfaceContainer: #241a14;
   --surfaceContainerHigh: #2f241d;
+  --surfaceContainerHighest: #3a2e27;
   --surfaceVariant: #52443c;
   --onSurfaceVariant: #d7c2b8;
   
   --outline: #9f8c85;
+  --outlineVariant: #52443c;
   
   --brand-gradient: linear-gradient(135deg, #ffb784 0%, #e6c0a0 100%);
   
@@ -65,37 +68,7 @@
   color: var(--onSurface);
 }
 
-[data-theme='light'] {
-  --primary: #8f4e00;
-  --onPrimary: #ffffff;
-  --primaryContainer: #ffdcc5;
-  --onPrimaryContainer: #2e1500;
-  
-  --secondary: #77583e;
-  --onSecondary: #ffffff;
-  --secondaryContainer: #ffdbbc;
-  
-  --tertiary: #655f2f;
-  --onTertiary: #ffffff;
-  --tertiaryContainer: #ebe4a7;
-  
-  --error: #ba1a1a;
-  --onError: #ffffff;
-  
-  --background: #fff8f5;
-  --onBackground: #221a15;
-  
-  --surface: #fff8f5;
-  --onSurface: #221a15;
-  --surfaceContainer: #fceee6;
-  --surfaceContainerHigh: #f6e8df;
-  --surfaceVariant: #f4ded4;
-  --onSurfaceVariant: #52443c;
-  
-  --outline: #85746b;
-  
-  --brand-gradient: linear-gradient(135deg, #8f4e00 0%, #77583e 100%);
-}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
