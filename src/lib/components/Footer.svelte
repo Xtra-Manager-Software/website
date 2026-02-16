@@ -1,6 +1,7 @@
 <script>
   import IconGithub from "~icons/simple-icons/github";
   import IconTelegram from "~icons/simple-icons/telegram";
+  import IconDiscord from "~icons/simple-icons/discord";
 
   const currentYear = new Date().getFullYear();
 </script>
@@ -96,6 +97,21 @@
                 <IconTelegram class="text-lg" />
               </div>
               <span class="font-medium">Telegram Community</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://discord.gg/mQYVj4twYZ"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-onSurfaceVariant hover:text-primary transition-colors group"
+            >
+              <div
+                class="p-2 rounded-full bg-surfaceContainerHigh hover:bg-onSurface/10 transition-colors"
+              >
+                <IconDiscord class="text-lg" />
+              </div>
+              <span class="font-medium">Discord Server</span>
             </a>
           </li>
         </ul>
