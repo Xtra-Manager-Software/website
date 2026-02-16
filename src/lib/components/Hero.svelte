@@ -40,7 +40,7 @@
   </div>
 
   <div
-    class="max-w-4xl mx-auto flex flex-col items-center gap-6 md:gap-8 lg:gap-10 relative z-10"
+    class="w-full max-w-4xl mx-auto flex flex-col items-center gap-6 md:gap-8 lg:gap-10 relative z-10"
   >
     <div
       class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-surface-container-high border border-outline/10 text-xs md:text-sm font-medium text-on-surface-variant hover:bg-surface-container-high/80 transition-colors cursor-default animate-in slide-in-from-bottom-2 fade-in duration-500"
@@ -53,7 +53,7 @@
     </div>
 
     <h1
-      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight text-on-surface animate-in slide-in-from-bottom-4 fade-in duration-700 delay-100"
+      class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight text-on-surface animate-in slide-in-from-bottom-4 fade-in duration-700 delay-100 text-balance"
     >
       Build programs that are <br class="hidden sm:block" />
       <span class="text-primary">actually useful.</span>
@@ -90,7 +90,7 @@
     </div>
 
     <div
-      class="grid grid-cols-4 gap-2 md:gap-8 lg:gap-16 mt-16 md:mt-24 pt-8 border-t border-outline/10 w-full animate-in fade-in duration-1000 delay-500"
+      class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 lg:gap-16 mt-16 md:mt-24 pt-8 border-t border-outline/10 w-full animate-in fade-in duration-1000 delay-500"
     >
       <div class="flex flex-col items-center gap-0.5 md:gap-1">
         <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
@@ -131,7 +131,7 @@
     </div>
 
     <div
-      class="mt-16 md:mt-24 w-full max-w-5xl overflow-hidden relative animate-in fade-in duration-1000 delay-700 mask-linear-gradient"
+      class="mt-16 md:mt-24 w-full max-w-[calc(100vw-2rem)] md:max-w-5xl overflow-hidden relative animate-in fade-in duration-1000 delay-700 mask-linear-gradient mx-auto"
     >
       <div class="flex w-max">
         <div
@@ -153,6 +153,7 @@
           {#each techStack as tech}
             <div
               class="flex flex-col items-center gap-2 text-on-surface-variant/50 hover:text-primary transition-colors duration-300"
+              title={tech.name}
             >
               <tech.icon class="text-3xl md:text-4xl" />
             </div>

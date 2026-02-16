@@ -102,4 +102,5 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--surface);
   color: var(--onSurface);
+  overflow-x: hidden;
 }
