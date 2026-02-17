@@ -5,7 +5,7 @@
   const team = [
     {
       name: "Gustyx-Power",
-      role: "Founder & Developer",
+      role: "Founder & Mobile Developer",
       bio: "Not a Pro Developer, just want to share my hobby and improve the community.",
       avatar: "https://avatars.githubusercontent.com/u/142430633?v=4",
       github: "https://github.com/Gustyx-Power",
@@ -13,7 +13,7 @@
     },
     {
       name: "Pavelc4",
-      role: "Co Founders & UI/UX",
+      role: "Co Founders & Web Developer",
       bio: "Just an ordinary student with a passion web development.",
       avatar: "https://avatars.githubusercontent.com/u/94319420?v=4",
       github: "https://github.com/pavelc4",
@@ -21,8 +21,8 @@
     },
     {
       name: "Ziyu4",
-      role: "Contirbutor & Suki",
-      bio: "Call this guy Raja Suki liar",
+      role: "Contirbutor & Backend Developer",
+      bio: "Just Meow Meow",
       avatar: "https://github.com/ziyu4.png",
       github: "https://github.com/ziyu4",
       telegram: "https://t.me/ziyu4",
@@ -65,6 +65,7 @@
                 <img
                   src={member.avatar}
                   alt={member.name}
+                  loading="lazy"
                   class="w-full h-full object-cover bg-surface-container-highest relative z-10 rounded-full"
                 />
               </div>
