@@ -20,6 +20,7 @@
     "vite-plugin-functions-mixins": "^0.4.1"
   },
   "dependencies": {
+    "@material-symbols-svg/react-rounded": "^0.1.22",
     "@material/web": "^2.4.1",
     "lucide-svelte": "^0.564.0",
     "m3-svelte": "^7.1.0",

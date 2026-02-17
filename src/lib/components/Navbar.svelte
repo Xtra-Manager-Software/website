@@ -2,11 +2,19 @@
   import IconMenu from "~icons/material-symbols/menu-rounded";
   import IconClose from "~icons/material-symbols/close-rounded";
   import IconGithub from "~icons/simple-icons/github";
+  import { navigate } from "../router.js";
 
   let isMenuOpen = $state(false);
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
+  }
+
+  function goHome(e) {
+    e.preventDefault();
+    navigate("/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    isMenuOpen = false;
   }
 </script>
 
@@ -24,28 +32,29 @@
       <ul class="flex flex-row gap-1 font-medium text-base list-none m-0 p-0">
         <li>
           <a
-            href="javascript:void(0)"
+            href="/"
+            onclick={goHome}
             class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
             >Home</a
           >
         </li>
         <li>
           <a
-            href="#platform"
+            href="/#platform"
             class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
             >Platform</a
           >
         </li>
         <li>
           <a
-            href="#team"
+            href="/#team"
             class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
             >Team</a
           >
         </li>
         <li>
           <a
-            href="#blog"
+            href="/#blog"
             class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
             >Blog</a
           >
@@ -91,15 +100,15 @@
       >
         <li>
           <a
-            href="#"
-            onclick={toggleMenu}
+            href="/"
+            onclick={goHome}
             class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Home</a
           >
         </li>
         <li>
           <a
-            href="#platform"
+            href="/#platform"
             onclick={toggleMenu}
             class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Platform</a
@@ -107,7 +116,7 @@
         </li>
         <li>
           <a
-            href="#team"
+            href="/#team"
             onclick={toggleMenu}
             class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Team</a
@@ -115,7 +124,7 @@
         </li>
         <li>
           <a
-            href="#blog"
+            href="/#blog"
             onclick={toggleMenu}
             class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Blog</a
