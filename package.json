@@ -22,7 +22,7 @@
   "dependencies": {
     "@material-symbols-svg/react-rounded": "^0.1.22",
     "@material/web": "^2.4.1",
-    "lucide-svelte": "^0.564.0",
+    "lucide-svelte": "^0.570.0",
     "m3-svelte": "^7.1.0",
     "material-symbols": "^0.40.2"
   }
