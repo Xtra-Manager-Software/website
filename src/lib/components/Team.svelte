@@ -1,7 +1,6 @@
 <script>
   import IconGithub from "~icons/simple-icons/github";
   import IconTelegram from "~icons/simple-icons/telegram";
-  import { pathPixelCircle } from "m3-svelte";
 
   const team = [
     {
@@ -21,8 +20,6 @@
       telegram: "https://t.me/pavelc4",
     },
   ];
-
-  const shapeScale = "translate(0.5, 0.5) scale(0.0032) translate(-190, -190)";
 </script>
 
 <section
@@ -56,22 +53,11 @@
               <div
                 class="relative w-32 h-32 md:w-40 md:h-40 group-hover:scale-105 transition-transform duration-500"
               >
-                <div
-                  class="absolute inset-0 bg-primary/20 blur-2xl group-hover:bg-primary/30 transition-all"
-                  style="clip-path: url(#shape-pixel);"
-                ></div>
-
-                <div
-                  class="absolute inset-0 bg-gradient-to-tr from-primary to-tertiary opacity-20 group-hover:opacity-40 transition-opacity duration-500"
-                  style="clip-path: url(#shape-pixel);"
-                ></div>
-
                 <!-- Foto Utama -->
                 <img
                   src={member.avatar}
                   alt={member.name}
-                  class="w-full h-full object-cover bg-surface-container-highest relative z-10"
-                  style="clip-path: url(#shape-pixel);"
+                  class="w-full h-full object-cover bg-surface-container-highest relative z-10 rounded-full"
                 />
               </div>
             </div>
@@ -119,12 +105,4 @@
       {/each}
     </div>
   </div>
-
-  <svg class="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-    <defs>
-      <clipPath id="shape-pixel" clipPathUnits="objectBoundingBox">
-        <path d={pathPixelCircle} transform={shapeScale} />
-      </clipPath>
-    </defs>
-  </svg>
 </section>
