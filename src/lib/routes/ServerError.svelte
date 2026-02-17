@@ -9,6 +9,11 @@
   import IconWarning from "~icons/material-symbols/warning-rounded";
 </script>
 
+<svelte:head>
+  <title>500 Server Error - Xtra Manager</title>
+  <meta name="robots" content="noindex, nofollow" />
+</svelte:head>
+
 <div
   class="min-h-screen flex items-center justify-center p-12 md:p-24 relative overflow-hidden bg-surface select-none cursor-default"
 >

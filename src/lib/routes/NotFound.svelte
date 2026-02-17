@@ -8,6 +8,11 @@
   import IconWifiOff from "~icons/material-symbols/wifi-off-rounded";
 </script>
 
+<svelte:head>
+  <title>404 Not Found - Xtra Manager</title>
+  <meta name="robots" content="noindex, nofollow" />
+</svelte:head>
+
 <div
   class="min-h-screen flex items-center justify-center p-12 md:p-24 relative overflow-hidden bg-surface select-none cursor-default"
 >
