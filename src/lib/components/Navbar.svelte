@@ -24,7 +24,7 @@
       <ul class="flex flex-row gap-1 font-medium text-base list-none m-0 p-0">
         <li>
           <a
-            href="#"
+            href="javascript:void(0)"
             class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
             >Home</a
           >
