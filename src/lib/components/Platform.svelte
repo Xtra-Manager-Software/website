@@ -35,7 +35,10 @@
   ];
 </script>
 
-<section id="platform" class="py-20 md:py-32 px-4 relative overflow-hidden">
+<section
+  id="platform"
+  class="py-20 md:py-32 px-4 relative overflow-hidden select-none cursor-default"
+>
   <div class="absolute inset-0 pointer-events-none -z-10">
     <div
       class="absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[100px]"
