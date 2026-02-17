@@ -19,6 +19,14 @@
       github: "https://github.com/pavelc4",
       telegram: "https://t.me/pavelc4",
     },
+    {
+      name: "Ziyu4",
+      role: "Contirbutor & Suki",
+      bio: "Call this guy Raja Suki liar",
+      avatar: "https://github.com/ziyu4.png",
+      github: "https://github.com/ziyu4",
+      telegram: "https://t.me/ziyu4",
+    },
   ];
 </script>
 
