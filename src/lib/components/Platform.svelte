@@ -93,6 +93,7 @@
                   src={platform.logo_url}
                   alt={platform.name}
                   class="w-full h-full object-cover"
+                  crossorigin="anonymous"
                 />
               {:else if platform.icon}
                 <svelte:component this={platform.icon} class="text-2xl" />

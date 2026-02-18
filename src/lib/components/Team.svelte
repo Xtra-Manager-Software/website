@@ -17,7 +17,7 @@
       bio: "Just an ordinary student with a passion web development.",
       avatar: "https://avatars.githubusercontent.com/u/94319420?v=4",
       github: "https://github.com/pavelc4",
-      telegram: "https://t.me/pavelc4",
+      telegram: "https://t.me/pavellc",
     },
     {
       name: "Ziyu4",
@@ -61,11 +61,11 @@
               <div
                 class="relative w-32 h-32 md:w-40 md:h-40 group-hover:scale-105 transition-transform duration-500"
               >
-                <!-- Foto Utama -->
                 <img
                   src={member.avatar}
                   alt={member.name}
                   loading="lazy"
+                  crossorigin="anonymous"
                   class="w-full h-full object-cover bg-surface-container-highest relative z-10 rounded-full"
                 />
               </div>
