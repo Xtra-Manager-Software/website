@@ -3,36 +3,39 @@
   import IconAndroid from "~icons/simple-icons/android";
   import IconGithub from "~icons/simple-icons/github";
 
-  let platforms = [
-    {
-      name: "Lorem Ipsum 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      icon: IconAndroid,
-      tags: ["Lorem", "Ipsum", "Dolor"],
-      sourceLink: "#",
-      downloadLink: "#",
-      version: "v1.0.0",
-    },
-    {
-      name: "Lorem Ipsum 2",
-      description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-      icon: IconGithub,
-      tags: ["Sit", "Amet", "Consectetur"],
-      sourceLink: "#",
-      version: "v2.0.0",
-    },
-    {
-      name: "Lorem Ipsum 3",
-      description:
-        "Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.",
-      icon: IconArrowRight,
-      tags: ["Adipiscing", "Elit", "Sed"],
-      sourceLink: "#",
-      version: "v3.0.0",
-    },
-  ];
+  import { onMount, tick } from "svelte";
+
+  let platforms = [];
+  let loading = true;
+  let error = null;
+
+  onMount(async () => {
+    console.log("API_URL:", import.meta.env.API_URL);
+    try {
+      const response = await fetch("/api/projects", {
+        method: "GET",
+      });
+      console.log("Response status:", response.status);
+      if (!response.ok) throw new Error("Failed to fetch projects");
+      const data = await response.json();
+      console.log("Fetched data:", data);
+      platforms = data.projects.map((p) => ({
+        name: p.name,
+        description: p.description,
+        icon: null,
+        logo_url: p.logo_url,
+        tags: p.tags,
+        sourceLink: p.project_url,
+        downloadLink: p.download_url,
+        version: p.version,
+      }));
+    } catch (e) {
+      console.error(e);
+      error = e.message;
+    } finally {
+      loading = false;
+    }
+  });
 </script>
 
 <section
@@ -85,9 +88,19 @@
             {/if}
 
             <div
-              class="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-tertiary-container text-on-tertiary-container group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm"
+              class="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-tertiary-container text-on-tertiary-container group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm overflow-hidden"
             >
-              <svelte:component this={platform.icon} class="text-2xl" />
+              {#if platform.logo_url}
+                <img
+                  src={platform.logo_url}
+                  alt={platform.name}
+                  class="w-full h-full object-cover"
+                />
+              {:else if platform.icon}
+                <svelte:component this={platform.icon} class="text-2xl" />
+              {:else}
+                <IconAndroid class="text-2xl" />
+              {/if}
             </div>
 
             <h3
