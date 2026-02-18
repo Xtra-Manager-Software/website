@@ -2,31 +2,41 @@
 
 @theme {
   --color-primary: var(--primary);
-  --color-onPrimary: var(--onPrimary);
-  --color-primaryContainer: var(--primaryContainer);
-  --color-onPrimaryContainer: var(--onPrimaryContainer);
+  --color-on-primary: var(--onPrimary);
+  --color-primary-container: var(--primaryContainer);
+  --color-on-primary-container: var(--onPrimaryContainer);
   
   --color-secondary: var(--secondary);
-  --color-onSecondary: var(--onSecondary);
-  --color-secondaryContainer: var(--secondaryContainer);
+  --color-on-secondary: var(--onSecondary);
+  --color-secondary-container: var(--secondaryContainer);
+  --color-on-secondary-container: var(--onSecondaryContainer);
   
   --color-tertiary: var(--tertiary);
-  --color-onTertiary: var(--onTertiary);
-  --color-tertiaryContainer: var(--tertiaryContainer);
+  --color-on-tertiary: var(--onTertiary);
+  --color-tertiary-container: var(--tertiaryContainer);
+  --color-on-tertiary-container: var(--onTertiaryContainer);
+  
+  --color-error: var(--error);
+  --color-on-error: var(--onError);
   
   --color-background: var(--background);
-  --color-onBackground: var(--onBackground);
+  --color-on-background: var(--onBackground);
   
   --color-surface: var(--surface);
-  --color-onSurface: var(--onSurface);
-  --color-surfaceContainer: var(--surfaceContainer);
-  --color-surfaceContainerLow: var(--surfaceContainerLow);
-  --color-surfaceContainerLowest: var(--surfaceContainerLowest);
-  --color-surfaceContainerHighest: var(--surfaceContainerHighest);
+  --color-on-surface: var(--onSurface);
   
-  --color-outlineVariant: var(--outlineVariant);
+  --color-surface-container-lowest: var(--surfaceContainerLowest);
+  --color-surface-container-low: var(--surfaceContainerLow);
+  --color-surface-container: var(--surfaceContainer);
+  --color-surface-container-high: var(--surfaceContainerHigh);
+  --color-surface-container-highest: var(--surfaceContainerHighest);
+  
+  --color-surface-variant: var(--surfaceVariant);
+  --color-on-surface-variant: var(--onSurfaceVariant);
+  
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outlineVariant);
 }
-
 
 :root {
   --primary: #ffb784;
@@ -47,16 +57,18 @@
   --error: #ffb4ab;
   --onError: #690005;
   
-  --background: #19120d;
+  --background: #0f0a08; 
   --onBackground: #efe0d9;
   
-  --surface: #19120d;
+  --surface: #0f0a08;
   --onSurface: #efe0d9;
-  --surfaceContainerLowest: #110d0a;
-  --surfaceContainerLow: #1e1610;
-  --surfaceContainer: #241a14;
-  --surfaceContainerHigh: #2f241d;
-  --surfaceContainerHighest: #3a2e27;
+
+  --surfaceContainerLowest: #140f0b;
+  --surfaceContainerLow: #1d1612;
+  --surfaceContainer: #251c16;       
+  --surfaceContainerHigh: #302620;
+  --surfaceContainerHighest: #3c312a;
+  
   --surfaceVariant: #52443c;
   --onSurfaceVariant: #d7c2b8;
   
@@ -64,17 +76,20 @@
   --outlineVariant: #52443c;
   
   --brand-gradient: linear-gradient(135deg, #ffb784 0%, #e6c0a0 100%);
-  
-  background-color: var(--surface);
-  color: var(--onSurface);
 }
-
 
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--surface);
-  color: var(--onSurface);
+  background-color: var(--background);
+  color: var(--onBackground);
   overflow-x: hidden;
+}
+
+/* Utilities Tambahan (Opsional) */
+.glass {
+  background: color-mix(in srgb, var(--surfaceContainer) 80%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--outlineVariant) 30%, transparent);
 }

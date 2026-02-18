@@ -35,6 +35,15 @@
             >
               pavelc4
             </a>
+            &
+            <a
+              href="https://github.com/ziyu4"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline font-medium transition-colors"
+            >
+              ziyu4
+            </a>
           </span>
         </div>
       </div>

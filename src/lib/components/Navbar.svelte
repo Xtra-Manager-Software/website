@@ -3,8 +3,10 @@
   import IconClose from "~icons/material-symbols/close-rounded";
   import IconGithub from "~icons/simple-icons/github";
   import { navigate } from "../router.js";
+  import { onMount } from "svelte";
 
   let isMenuOpen = $state(false);
+  let isScrolled = $state(false);
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
@@ -16,11 +18,32 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
     isMenuOpen = false;
   }
+
+  onMount(() => {
+    const handleScroll = () => {
+      isScrolled = window.scrollY > 20;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 </script>
 
 <nav class="fixed top-2 left-2 right-2 z-50 select-none cursor-default">
   <div
-    class="bg-surface-container-high/90 backdrop-blur-xl text-on-surface rounded-full shadow-xl px-4 md:px-6 min-h-[3.5rem] md:min-h-[4rem] transition-all duration-300 flex items-center justify-between relative"
+    class={`
+      rounded-full px-4 md:px-6 min-h-[3.5rem] md:min-h-[4rem] 
+      flex items-center justify-between relative
+      transition-all duration-500 ease-in-out
+      text-on-surface
+      ${
+        isScrolled
+          ? "bg-surface/30 backdrop-blur-[80px] shadow-lg"
+          : "bg-transparent shadow-none"
+      }
+    `}
   >
     <div
       class="font-bold tracking-tight px-3 py-2 md:px-4 text-base md:text-xl lg:text-2xl shrink-0 inline-flex items-center select-none cursor-default"
@@ -64,6 +87,13 @@
 
     <div class="flex items-center gap-2">
       <div class="hidden lg:flex items-center gap-2">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-surface-container-high/50 border border-outline/10 text-xs font-medium text-on-surface-variant hover:bg-surface-container-high/80 transition-colors cursor-default"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-primary/80 animate-pulse"
+          ></span>
+          <span>Open Source</span>
+        </div>
         <a
           href="https://github.com/Xtra-Manager-Software"
           target="_blank"
@@ -93,7 +123,7 @@
 
   {#if isMenuOpen}
     <div
-      class="absolute top-16 right-4 w-52 bg-surface-container-high rounded-2xl shadow-xl overflow-hidden lg:hidden animate-in slide-in-from-top-2 fade-in duration-200 z-40 p-2 origin-top-right"
+      class="absolute top-16 right-4 w-52 bg-surface-container-high/90 backdrop-blur-2xl rounded-2xl shadow-xl overflow-hidden lg:hidden animate-in slide-in-from-top-2 fade-in duration-200 z-40 p-2 origin-top-right"
     >
       <ul
         class="flex flex-col w-full gap-1 text-base text-on-surface list-none m-0 p-0"
@@ -130,7 +160,7 @@
             >Blog</a
           >
         </li>
-        <div class="h-px bg-outline/20 my-2"></div>
+        <div class="h-px bg-outline/10 my-2"></div>
         <li>
           <a
             href="https://github.com/Xtra-Manager-Software"

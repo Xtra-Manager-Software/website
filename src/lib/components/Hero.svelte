@@ -13,6 +13,8 @@
   import IconAndroid from "~icons/simple-icons/android";
   import IconJetpackCompose from "~icons/simple-icons/jetpackcompose";
 
+  import { onMount } from "svelte";
+
   const techStack = [
     { icon: IconKotlin, name: "Kotlin" },
     { icon: IconAndroid, name: "Android" },
@@ -28,12 +30,39 @@
     { icon: IconYaml, name: "YAML" },
     { icon: IconGithub, name: "GitHub" },
   ];
+
+  let heroSection;
+
+  onMount(() => {
+    const handleMouseMove = (e) => {
+      if (heroSection) {
+        const rect = heroSection.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        heroSection.style.setProperty("--mouse-x", `${x}px`);
+        heroSection.style.setProperty("--mouse-y", `${y}px`);
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  });
 </script>
 
 <section
-  class="relative min-h-[90dvh] flex flex-col items-center justify-center text-center px-4 py-12 md:py-24 overflow-hidden select-none cursor-default"
+  bind:this={heroSection}
+  class="relative min-h-[90dvh] flex flex-col items-center justify-start text-center px-4 pt-32 pb-12 md:pt-40 md:pb-24 overflow-hidden select-none cursor-default"
 >
-  <div class="absolute inset-0 -z-10 overflow-hidden">
+  <div
+    class="absolute inset-0 -z-20 h-full w-full bg-grid-white/[0.05] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_100%,transparent_100%)]"
+  ></div>
+
+  <div
+    class="absolute inset-0 -z-10 bg-[radial-gradient(600px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),var(--primary)_0%,transparent_40%)] opacity-20 transition-opacity duration-300 pointer-events-none"
+  ></div>
+  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
     <div
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-primary/20 rounded-full blur-[100px] md:blur-[120px] opacity-30 animate-pulse"
     ></div>
@@ -42,16 +71,6 @@
   <div
     class="w-full max-w-4xl mx-auto flex flex-col items-center gap-4 md:gap-8 lg:gap-10 relative z-10"
   >
-    <div
-      class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-surface-container-high border border-outline/10 text-xs md:text-sm font-medium text-on-surface-variant hover:bg-surface-container-high/80 transition-colors cursor-default animate-in slide-in-from-bottom-2 fade-in duration-500"
-    >
-      <span class="w-2 h-2 rounded-full bg-primary/80 animate-pulse"></span>
-      <span class="hidden sm:inline"
-        >Open Source • Practical • Collaborative</span
-      >
-      <span class="sm:hidden">Open Source</span>
-    </div>
-
     <h1
       class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight text-on-surface animate-in slide-in-from-bottom-4 fade-in duration-700 delay-100 text-balance"
     >

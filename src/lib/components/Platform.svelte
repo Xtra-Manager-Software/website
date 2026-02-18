@@ -70,7 +70,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {#each platforms as platform}
         <div
-          class="group relative flex flex-col bg-surface-container-low/50 backdrop-blur-md rounded-[2rem] p-6 md:p-8 hover:bg-surface-container/60 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2 overflow-hidden"
+          class="group relative flex flex-col bg-surface-container backdrop-blur-md rounded-[2rem] p-6 md:p-8 hover:bg-surface-container-high transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2 overflow-hidden"
         >
           <div
             class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -86,7 +86,7 @@
             {/if}
 
             <div
-              class="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-tertiary-container text-on-tertiary-container group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm overflow-hidden"
+              class="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-highest text-primary group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm overflow-hidden"
             >
               {#if platform.logo_url}
                 <img
@@ -122,31 +122,29 @@
               {/each}
             </div>
 
-            <div
-              class="flex items-center justify-end gap-3 mt-auto pt-4 border-t border-outline-variant/20"
-            >
+            <div class="flex items-center justify-end gap-3 mt-auto">
               <a
                 href={platform.sourceLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-tertiary-container hover:bg-tertiary-container/80 text-sm font-medium text-on-tertiary-container transition-all duration-300 hover:scale-105 group/btn"
+                class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full
+                bg-surface-container-highest hover:bg-on-surface/10
+                text-sm font-medium text-on-surface transition-all duration-300 hover:scale-105 group/btn"
               >
                 <IconGithub
                   class="text-lg group-hover/btn:scale-110 transition-transform"
                 />
                 GitHub
               </a>
+
               {#if platform.downloadLink}
                 <a
                   href={platform.downloadLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-primary hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 text-sm font-medium text-on-primary transition-all duration-300 group/btn"
+                  class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-sm font-medium text-on-primary transition-all duration-300 group/btn"
                 >
                   <span>Download</span>
-                  <IconArrowRight
-                    class="text-lg group-hover/btn:translate-x-1 transition-transform"
-                  />
                 </a>
               {/if}
             </div>

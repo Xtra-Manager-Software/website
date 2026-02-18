@@ -50,7 +50,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
       {#each team as member}
         <div
-          class="group relative flex flex-col items-center text-center bg-surface-container-low/50 backdrop-blur-md rounded-[2.5rem] p-8 hover:bg-surface-container/60 transition-all duration-500 hover:-translate-y-2 overflow-hidden hover:shadow-[0_0_30px_var(--primary)/20]"
+          class="group relative flex flex-col items-center text-center bg-surface-container backdrop-blur-md rounded-[2.5rem] p-8 hover:bg-surface-container-high transition-all duration-500 hover:-translate-y-2 overflow-hidden hover:shadow-xl"
         >
           <div
             class="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
