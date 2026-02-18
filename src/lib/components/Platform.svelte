@@ -10,11 +10,9 @@
   let error = null;
 
   onMount(async () => {
-    console.log("API_URL:", import.meta.env.API_URL);
+    const apiBase = import.meta.env.DEV ? "" : import.meta.env.API_URL;
     try {
-      const response = await fetch("/api/projects", {
-        method: "GET",
-      });
+      const response = await fetch(`${apiBase}/api/projects`);
       console.log("Response status:", response.status);
       if (!response.ok) throw new Error("Failed to fetch projects");
       const data = await response.json();
