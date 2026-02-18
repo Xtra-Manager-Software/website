@@ -28,7 +28,7 @@
       realName: "Pandu",
       role: "Contributor & Backend Developer",
       bio: "Just Meow Meow",
-      avatar: "/ziyu4.jpg",
+      avatar: "https://avatars.githubusercontent.com/ziyu4",
       github: "https://github.com/ziyu4",
       telegram: "https://t.me/ziyu4",
     },
@@ -52,10 +52,10 @@
         The minds behind Xtra Manager Software.
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+    <div class="flex flex-wrap justify-center gap-8 max-w-3xl mx-auto">
       {#each team as member}
         <div
-          class="group relative flex flex-col items-center text-center bg-surface-container backdrop-blur-md rounded-[2.5rem] p-8 hover:bg-surface-container-high transition-all duration-500 hover:-translate-y-2 overflow-hidden hover:shadow-xl"
+          class="w-full md:w-[calc(50%-1rem)] group relative flex flex-col items-center text-center bg-surface-container backdrop-blur-md rounded-[2.5rem] p-8 hover:bg-surface-container-high transition-all duration-500 hover:-translate-y-2 overflow-hidden hover:shadow-xl"
         >
           <div
             class="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
