@@ -34,6 +34,12 @@
       loading = false;
     }
   });
+  function formatTag(tag) {
+    const lower = tag.toLowerCase();
+    if (lower === "apps") return "Applications";
+    if (lower === "module") return "Root Module";
+    return tag;
+  }
 </script>
 
 <section
@@ -117,7 +123,7 @@
                 <span
                   class="px-3 py-1.5 rounded-full bg-surface-variant/50 hover:bg-surface-variant text-xs font-medium text-on-surface-variant transition-colors border border-outline/5 cursor-default"
                 >
-                  {tag}
+                  {formatTag(tag)}
                 </span>
               {/each}
             </div>
