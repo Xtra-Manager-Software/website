@@ -31,7 +31,7 @@
 </script>
 
 <section
-  class="relative min-h-[90dvh] flex flex-col items-center justify-center text-center px-4 py-16 md:py-24 overflow-hidden select-none cursor-default"
+  class="relative min-h-[90dvh] flex flex-col items-center justify-center text-center px-4 py-12 md:py-24 overflow-hidden select-none cursor-default"
 >
   <div class="absolute inset-0 -z-10 overflow-hidden">
     <div
@@ -40,7 +40,7 @@
   </div>
 
   <div
-    class="w-full max-w-4xl mx-auto flex flex-col items-center gap-6 md:gap-8 lg:gap-10 relative z-10"
+    class="w-full max-w-4xl mx-auto flex flex-col items-center gap-4 md:gap-8 lg:gap-10 relative z-10"
   >
     <div
       class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-surface-container-high border border-outline/10 text-xs md:text-sm font-medium text-on-surface-variant hover:bg-surface-container-high/80 transition-colors cursor-default animate-in slide-in-from-bottom-2 fade-in duration-500"
@@ -71,10 +71,8 @@
       class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none animate-in slide-in-from-bottom-8 fade-in duration-700 delay-300"
     >
       <a
-        href="https://t.me/XtraManagerSoftware"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="w-full sm:w-auto bg-primary text-on-primary hover:bg-primary/90 px-8 py-3.5 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+        href="#platform"
+        class="w-full sm:w-auto bg-primary text-on-primary hover:bg-primary/90 px-6 py-2.5 text-sm md:text-base md:px-8 md:py-3.5 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
       >
         Explore Project
       </a>
@@ -83,14 +81,14 @@
         href="https://github.com/Xtra-Manager-Software"
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full sm:w-auto bg-surface-container-high text-on-surface hover:bg-on-surface/5 border border-outline/10 px-8 py-3.5 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
+        class="w-full sm:w-auto bg-surface-container-high text-on-surface hover:bg-on-surface/5 border border-outline/10 px-6 py-2.5 text-sm md:text-base md:px-8 md:py-3.5 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
       >
         See More
       </a>
     </div>
 
     <div
-      class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 lg:gap-16 mt-16 md:mt-24 pt-8 border-t border-outline/10 w-full animate-in fade-in duration-1000 delay-500"
+      class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 lg:gap-16 mt-8 md:mt-24 pt-8 border-t border-outline/10 w-full animate-in fade-in duration-1000 delay-500"
     >
       <div class="flex flex-col items-center gap-0.5 md:gap-1">
         <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
@@ -131,7 +129,7 @@
     </div>
 
     <div
-      class="mt-16 md:mt-24 w-full max-w-[calc(100vw-2rem)] md:max-w-5xl overflow-hidden relative animate-in fade-in duration-1000 delay-700 mask-linear-gradient mx-auto"
+      class="mt-8 md:mt-24 w-full max-w-[calc(100vw-2rem)] md:max-w-5xl overflow-hidden relative animate-in fade-in duration-1000 delay-700 mask-linear-gradient mx-auto"
     >
       <div class="flex w-max">
         <div
