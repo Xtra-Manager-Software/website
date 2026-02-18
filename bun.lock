@@ -7,7 +7,7 @@
       "dependencies": {
         "@material-symbols-svg/react-rounded": "^0.1.22",
         "@material/web": "^2.4.1",
-        "lucide-svelte": "^0.570.0",
+        "lucide-svelte": "^0.574.0",
         "m3-svelte": "^7.1.0",
         "material-symbols": "^0.40.2",
       },
@@ -302,7 +302,7 @@
 
     "locate-character": ["locate-character@3.0.0", "", {}, "sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA=="],
 
-    "lucide-svelte": ["lucide-svelte@0.570.0", "", { "peerDependencies": { "svelte": "^3 || ^4 || ^5.0.0-next.42" } }, "sha512-Jg/3Q1VM+2sSb7vpNMNaDrcogwnObP3iNBir5tvuu1+nCPEpTTG8wLJA4DiKoIEnsU8XjrVYsoZDe0hYQ1ehiw=="],
+    "lucide-svelte": ["lucide-svelte@0.574.0", "", { "peerDependencies": { "svelte": "^3 || ^4 || ^5.0.0-next.42" } }, "sha512-KhMbh4uFO8jm60bYPWHV5GmNy1P5hs1M6BfDYUjw0CZ5tJoJ+lMzAdTBBb9L+Gj3xOlHIgjsLMVnjQK3qcWrEA=="],
 
     "m3-svelte": ["m3-svelte@7.1.0", "", { "dependencies": { "@iconify/types": "^2.0.0", "@ktibow/iconset-material-symbols": "~0.0.1764827375" }, "peerDependencies": { "@ktibow/material-color-utilities-nightly": "^0.4.1768930731000", "svelte": "^5.40.0", "vite-plugin-functions-mixins": "^0.4.1" }, "optionalPeers": ["@ktibow/material-color-utilities-nightly", "vite-plugin-functions-mixins"] }, "sha512-7TgIRLPkl1Of7APsl5qmTtb+DeyVyY2B8tfgmazDWOln+HsVpCLu53v688nabNPkblGEWESD86ifxPjgREL4Tw=="],
 

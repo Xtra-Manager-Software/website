@@ -5,6 +5,8 @@
   const team = [
     {
       name: "Gustyx-Power",
+      realName: "Gusti Aditya Muzaky",
+      university: "Pelita Bangsa University",
       role: "Founder & Mobile Developer",
       bio: "Not a Pro Developer, just want to share my hobby and improve the community.",
       avatar: "https://avatars.githubusercontent.com/u/142430633?v=4",
@@ -13,6 +15,8 @@
     },
     {
       name: "Pavelc4",
+      realName: "Dimas Dwi Ariyanto",
+      university: "Widyatama University",
       role: "Co Founders & Web Developer",
       bio: "Just an ordinary student with a passion web development.",
       avatar: "https://avatars.githubusercontent.com/u/94319420?v=4",
@@ -21,9 +25,10 @@
     },
     {
       name: "Ziyu4",
-      role: "Contirbutor & Backend Developer",
+      realName: "Pandu",
+      role: "Contributor & Backend Developer",
       bio: "Just Meow Meow",
-      avatar: "https://github.com/ziyu4.png",
+      avatar: "https://github.com/ziyu4.jpg",
       github: "https://github.com/ziyu4",
       telegram: "https://t.me/ziyu4",
     },
@@ -73,10 +78,22 @@
 
             <!-- Content -->
             <h3
-              class="text-2xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors duration-300"
+              class="text-2xl font-bold text-on-surface mb-1 group-hover:text-primary transition-colors duration-300"
             >
               {member.name}
             </h3>
+            <p class="text-sm font-medium text-on-surface-variant mb-3">
+              {member.realName}
+            </p>
+            {#if member.university}
+              <div class="mb-3">
+                <span
+                  class="inline-block px-3 py-1 rounded-full border border-outline/30 text-on-surface-variant text-xs font-medium"
+                >
+                  Student at {member.university}
+                </span>
+              </div>
+            {/if}
             <span
               class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold uppercase tracking-widest mb-4"
             >
