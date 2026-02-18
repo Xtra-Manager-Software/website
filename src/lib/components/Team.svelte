@@ -88,7 +88,7 @@
             {#if member.university}
               <div class="mb-3">
                 <span
-                  class="inline-block px-3 py-1 rounded-full border border-outline/30 text-on-surface-variant text-xs font-medium"
+                  class="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium"
                 >
                   Student at {member.university}
                 </span>
