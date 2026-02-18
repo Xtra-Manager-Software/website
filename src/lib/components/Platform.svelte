@@ -34,11 +34,20 @@
       loading = false;
     }
   });
-  function formatTag(tag) {
-    const lower = tag.toLowerCase();
-    if (lower === "apps") return "Applications";
-    if (lower === "module") return "Root Module";
-    return tag;
+  function getCategoryLabel(tags) {
+    if (!tags) return null;
+    const lowerTags = tags.map((t) => t.toLowerCase());
+    if (lowerTags.includes("apps")) return "Applications";
+    if (lowerTags.includes("module")) return "Root Module";
+    return null;
+  }
+
+  function filterGenericTags(tags) {
+    if (!tags) return [];
+    return tags.filter((tag) => {
+      const lower = tag.toLowerCase();
+      return lower !== "apps" && lower !== "module";
+    });
   }
 </script>
 
@@ -109,21 +118,27 @@
             </div>
 
             <h3
-              class="text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors duration-300 tracking-tight"
+              class="text-2xl font-bold text-on-surface mb-1 group-hover:text-primary transition-colors duration-300 tracking-tight"
             >
               {platform.name}
             </h3>
+
+            {#if getCategoryLabel(platform.tags)}
+              <div class="mb-3 text-sm font-medium text-primary">
+                {getCategoryLabel(platform.tags)}
+              </div>
+            {/if}
 
             <p class="text-on-surface-variant mb-6 leading-relaxed text-base">
               {platform.description}
             </p>
 
             <div class="flex flex-wrap gap-2 mb-8">
-              {#each platform.tags as tag}
+              {#each filterGenericTags(platform.tags) as tag}
                 <span
                   class="px-3 py-1.5 rounded-full bg-surface-variant/50 hover:bg-surface-variant text-xs font-medium text-on-surface-variant transition-colors border border-outline/5 cursor-default"
                 >
-                  {formatTag(tag)}
+                  {tag}
                 </span>
               {/each}
             </div>
