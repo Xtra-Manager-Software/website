@@ -28,7 +28,7 @@
       realName: "Pandu",
       role: "Contributor & Backend Developer",
       bio: "Just Meow Meow",
-      avatar: "https://github.com/ziyu4.jpg",
+      avatar: "https://avatars.githubusercontent.com/ziyu4",
       github: "https://github.com/ziyu4",
       telegram: "https://t.me/ziyu4",
     },
