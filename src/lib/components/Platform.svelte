@@ -17,7 +17,7 @@
       if (!response.ok) throw new Error("Failed to fetch projects");
       const data = await response.json();
       console.log("Fetched data:", data);
-      platforms = data.projects.map((p) => ({
+      platforms = data.projects.slice(0, 3).map((p) => ({
         name: p.name,
         description: p.description,
         icon: null,

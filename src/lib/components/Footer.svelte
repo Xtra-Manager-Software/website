@@ -8,7 +8,7 @@
 
 <footer class="bg-surfaceContainer text-onSurface pt-12 pb-8 mt-20">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-2">
           <span
@@ -68,6 +68,29 @@
           </li>
           <li>
             <a href="#blog" class="hover:text-primary transition-colors">Blog</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h3 class="font-bold text-onSurface select-none cursor-default">
+          Downloads
+        </h3>
+        <ul class="flex flex-col gap-2 text-sm text-onSurfaceVariant">
+          <li>
+            <a href="#platform" class="hover:text-primary transition-colors"
+              >Apps</a
+            >
+          </li>
+          <li>
+            <a href="#platform" class="hover:text-primary transition-colors"
+              >Modules</a
+            >
+          </li>
+          <li>
+            <a href="#platform" class="hover:text-primary transition-colors"
+              >Kernels</a
             >
           </li>
         </ul>
