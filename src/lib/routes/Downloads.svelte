@@ -215,7 +215,7 @@
                             {/if}
 
                             <p
-                                class="text-on-surface-variant mb-6 leading-relaxed text-base"
+                                class="text-on-surface-variant mb-6 leading-relaxed text-base whitespace-pre-line"
                             >
                                 {platform.description}
                             </p>
