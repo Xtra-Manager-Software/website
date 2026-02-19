@@ -12,6 +12,7 @@
     home: () => import("./lib/routes/Home.svelte"),
     "server-error": () => import("./lib/routes/ServerError.svelte"),
     maintenance: () => import("./lib/routes/Maintenance.svelte"),
+    downloads: () => import("./lib/routes/Downloads.svelte"),
     "not-found": () => import("./lib/routes/NotFound.svelte"),
   };
 </script>

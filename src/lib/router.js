@@ -12,9 +12,9 @@ export function navigate(path) {
 
 export function handleLocation() {
   if (typeof window === 'undefined') return;
-  
+
   const path = window.location.pathname;
-  
+
   if (path === '/' || path === '') {
     route.set('home');
     params.set({});
@@ -23,6 +23,9 @@ export function handleLocation() {
     params.set({});
   } else if (path === '/maintenance') {
     route.set('maintenance');
+    params.set({});
+  } else if (path === '/downloads') {
+    route.set('downloads');
     params.set({});
   } else {
     route.set('not-found');

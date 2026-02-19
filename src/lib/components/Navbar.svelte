@@ -77,6 +77,13 @@
         </li>
         <li>
           <a
+            href="/downloads"
+            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
+            >Downloads</a
+          >
+        </li>
+        <li>
+          <a
             href="/#blog"
             class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
             >Blog</a
@@ -150,6 +157,15 @@
             onclick={toggleMenu}
             class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
             >Team</a
+          >
+        </li>
+        <div class="h-px bg-outline/10 my-2"></div>
+        <li>
+          <a
+            href="/downloads"
+            onclick={toggleMenu}
+            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
+            >Downloads</a
           >
         </li>
         <li>

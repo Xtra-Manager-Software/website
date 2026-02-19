@@ -79,17 +79,17 @@
         </h3>
         <ul class="flex flex-col gap-2 text-sm text-onSurfaceVariant">
           <li>
-            <a href="#platform" class="hover:text-primary transition-colors"
+            <a href="/downloads" class="hover:text-primary transition-colors"
               >Apps</a
             >
           </li>
           <li>
-            <a href="#platform" class="hover:text-primary transition-colors"
+            <a href="/downloads" class="hover:text-primary transition-colors"
               >Modules</a
             >
           </li>
           <li>
-            <a href="#platform" class="hover:text-primary transition-colors"
+            <a href="/downloads" class="hover:text-primary transition-colors"
               >Kernels</a
             >
           </li>
