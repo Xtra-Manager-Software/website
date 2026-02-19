@@ -34,6 +34,7 @@
         sourceLink: p.project_url,
         downloadLink: p.download_url,
         version: p.version,
+        updated_at: p.updated_at || p.created_at,
       }));
     } catch (e) {
       console.error(e);
@@ -47,15 +48,37 @@
     const lowerTags = tags.map((t) => t.toLowerCase());
     if (lowerTags.includes("apps")) return "Applications";
     if (lowerTags.includes("module")) return "Root Module";
+    if (lowerTags.includes("kernel")) return "Android Kernel";
+    if (lowerTags.includes("rom")) return "Custom ROM";
+    if (lowerTags.includes("tools")) return "System Tools";
     return null;
   }
 
   function filterGenericTags(tags) {
     if (!tags) return [];
+    const genericTags = ["apps", "module", "kernel", "rom", "tools"];
     return tags.filter((tag) => {
-      const lower = tag.toLowerCase();
-      return lower !== "apps" && lower !== "module";
+      return !genericTags.includes(tag.toLowerCase());
     });
+  }
+
+  function formatTimeAgo(dateString) {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const now = new Date();
+    const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30);
+    const years = Math.floor(days / 365);
+
+    if (seconds < 60) return "Just now";
+    if (minutes < 60) return `${minutes}m ago`;
+    if (hours < 24) return `${hours}h ago`;
+    if (days < 30) return `${days}d ago`;
+    if (months < 12) return `${months}mo ago`;
+    return `${years}y ago`;
   }
 </script>
 
@@ -105,6 +128,14 @@
                 class="absolute -top-2 -right-2 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container border border-outline/5 text-[11px] font-bold tracking-widest uppercase shadow-sm"
               >
                 {platform.version}
+              </div>
+            {/if}
+
+            {#if platform.updated_at}
+              <div
+                class="absolute top-0 left-0 p-4 text-xs font-medium text-on-surface-variant/70"
+              >
+                {formatTimeAgo(platform.updated_at)}
               </div>
             {/if}
 

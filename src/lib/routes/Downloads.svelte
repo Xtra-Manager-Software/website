@@ -14,8 +14,10 @@
         if (activeTab === "all") return true;
         const lowerTags = (p.tags || []).map((t) => t.toLowerCase());
         if (activeTab === "apps") return lowerTags.includes("apps");
-        if (activeTab === "modules") return lowerTags.includes("module"); // "module" tag based on previous context
-        if (activeTab === "kernels") return lowerTags.includes("kernel"); // Assuming "kernel" tag
+        if (activeTab === "modules") return lowerTags.includes("module");
+        if (activeTab === "kernels") return lowerTags.includes("kernel");
+        if (activeTab === "roms") return lowerTags.includes("rom");
+        if (activeTab === "tools") return lowerTags.includes("tools");
         return false;
     });
 
@@ -42,6 +44,7 @@
                 sourceLink: p.project_url,
                 downloadLink: p.download_url,
                 version: p.version,
+                updated_at: p.updated_at || p.created_at,
             }));
         } catch (e) {
             console.error(e);
@@ -51,19 +54,41 @@
         }
     });
 
+    function formatTimeAgo(dateString) {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+        const now = new Date();
+        const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+        const minutes = Math.floor(seconds / 60);
+        const hours = Math.floor(minutes / 60);
+        const days = Math.floor(hours / 24);
+        const months = Math.floor(days / 30);
+        const years = Math.floor(days / 365);
+
+        if (seconds < 60) return "Just now";
+        if (minutes < 60) return `${minutes}m ago`;
+        if (hours < 24) return `${hours}h ago`;
+        if (days < 30) return `${days}d ago`;
+        if (months < 12) return `${months}mo ago`;
+        return `${years}y ago`;
+    }
+
     function getCategoryLabel(tags) {
         if (!tags) return null;
         const lowerTags = tags.map((t) => t.toLowerCase());
         if (lowerTags.includes("apps")) return "Applications";
         if (lowerTags.includes("module")) return "Root Module";
+        if (lowerTags.includes("kernel")) return "Android Kernel";
+        if (lowerTags.includes("rom")) return "Custom ROM";
+        if (lowerTags.includes("tools")) return "System Tools";
         return null;
     }
 
     function filterGenericTags(tags) {
         if (!tags) return [];
+        const genericTags = ["apps", "module", "kernel", "rom", "tools"];
         return tags.filter((tag) => {
-            const lower = tag.toLowerCase();
-            return lower !== "apps" && lower !== "module" && lower !== "kernel";
+            return !genericTags.includes(tag.toLowerCase());
         });
     }
 </script>
@@ -94,7 +119,7 @@
 
         <!-- Tabs -->
         <div class="flex justify-center flex-wrap gap-2 mb-12">
-            {#each ["apps", "modules", "kernels"] as tab}
+            {#each ["apps", "modules", "kernels", "roms", "tools"] as tab}
                 <button
                     class="px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 capitalize
           {activeTab === tab
@@ -152,6 +177,14 @@
                                     class="absolute -top-2 -right-2 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container border border-outline/5 text-[11px] font-bold tracking-widest uppercase shadow-sm"
                                 >
                                     {platform.version}
+                                </div>
+                            {/if}
+
+                            {#if platform.updated_at}
+                                <div
+                                    class="absolute top-0 left-0 p-4 text-xs font-medium text-on-surface-variant/70"
+                                >
+                                    {formatTimeAgo(platform.updated_at)}
                                 </div>
                             {/if}
 
