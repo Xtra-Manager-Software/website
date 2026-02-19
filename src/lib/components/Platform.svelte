@@ -17,7 +17,15 @@
       if (!response.ok) throw new Error("Failed to fetch projects");
       const data = await response.json();
       console.log("Fetched data:", data);
-      platforms = data.projects.slice(0, 3).map((p) => ({
+
+      // Sort by updated_at to show the most recently updated/released projects first
+      const sortedProjects = data.projects.sort((a, b) => {
+        const dateA = new Date(a.updated_at || a.created_at || 0);
+        const dateB = new Date(b.updated_at || b.created_at || 0);
+        return dateB.getTime() - dateA.getTime();
+      });
+
+      platforms = sortedProjects.slice(0, 3).map((p) => ({
         name: p.name,
         description: p.description,
         icon: null,

@@ -25,7 +25,15 @@
             const response = await fetch(`${apiBase}/api/projects`);
             if (!response.ok) throw new Error("Failed to fetch projects");
             const data = await response.json();
-            projects = data.projects.map((p) => ({
+
+            // Sort by updated_at to show the most recently updated/released projects first
+            const sortedProjects = data.projects.sort((a, b) => {
+                const dateA = new Date(a.updated_at || a.created_at || 0);
+                const dateB = new Date(b.updated_at || b.created_at || 0);
+                return dateB.getTime() - dateA.getTime();
+            });
+
+            projects = sortedProjects.map((p) => ({
                 name: p.name,
                 description: p.description,
                 icon: null,
