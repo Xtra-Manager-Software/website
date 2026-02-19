@@ -54,23 +54,15 @@
         }
     });
 
-    function formatTimeAgo(dateString) {
+    function formatDate(dateString) {
         if (!dateString) return "";
         const date = new Date(dateString);
-        const now = new Date();
-        const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
-        const minutes = Math.floor(seconds / 60);
-        const hours = Math.floor(minutes / 60);
-        const days = Math.floor(hours / 24);
-        const months = Math.floor(days / 30);
-        const years = Math.floor(days / 365);
-
-        if (seconds < 60) return "Just now";
-        if (minutes < 60) return `${minutes}m ago`;
-        if (hours < 24) return `${hours}h ago`;
-        if (days < 30) return `${days}d ago`;
-        if (months < 12) return `${months}mo ago`;
-        return `${years}y ago`;
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        const hours = String(date.getHours()).padStart(2, "0");
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        return `${year}-${month}-${day} ${hours}:${minutes}`;
     }
 
     function getCategoryLabel(tags) {
@@ -174,7 +166,7 @@
                         <div class="relative z-10 flex flex-col h-full">
                             {#if platform.version}
                                 <div
-                                    class="absolute -top-2 -right-2 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container border border-outline/5 text-[11px] font-bold tracking-widest uppercase shadow-sm"
+                                    class="absolute -top-2 -right-2 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container border border-outline/5 text-[11px] font-bold tracking-widest uppercase shadow-sm z-20"
                                 >
                                     {platform.version}
                                 </div>
@@ -182,9 +174,9 @@
 
                             {#if platform.updated_at}
                                 <div
-                                    class="absolute top-0 left-0 p-4 text-xs font-medium text-on-surface-variant/70"
+                                    class="absolute top-8 right-0 p-2 text-[10px] font-medium text-on-surface-variant/70 z-10"
                                 >
-                                    {formatTimeAgo(platform.updated_at)}
+                                    {formatDate(platform.updated_at)}
                                 </div>
                             {/if}
 
