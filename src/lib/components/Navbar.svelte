@@ -94,13 +94,6 @@
 
     <div class="flex items-center gap-2">
       <div class="hidden lg:flex items-center gap-2">
-        <div
-          class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-surface-container-high/50 border border-outline/10 text-xs font-medium text-on-surface-variant hover:bg-surface-container-high/80 transition-colors cursor-default"
-        >
-          <span class="w-1.5 h-1.5 rounded-full bg-primary/80 animate-pulse"
-          ></span>
-          <span>Open Source</span>
-        </div>
         <a
           href="https://github.com/Xtra-Manager-Software"
           target="_blank"
