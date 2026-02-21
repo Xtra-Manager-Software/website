@@ -28,14 +28,7 @@
             if (!response.ok) throw new Error("Failed to fetch projects");
             const data = await response.json();
 
-            // Sort by updated_at to show the most recently updated/released projects first
-            const sortedProjects = data.projects.sort((a, b) => {
-                const dateA = new Date(a.updated_at || a.created_at || 0);
-                const dateB = new Date(b.updated_at || b.created_at || 0);
-                return dateB.getTime() - dateA.getTime();
-            });
-
-            projects = sortedProjects.map((p) => ({
+            projects = data.projects.map((p) => ({
                 name: p.name,
                 description: p.description,
                 icon: null,
@@ -54,9 +47,9 @@
         }
     });
 
-    function formatDate(dateString) {
-        if (!dateString) return "";
-        const date = new Date(dateString);
+    function formatDate(unixTimestamp) {
+        if (!unixTimestamp) return "";
+        const date = new Date(unixTimestamp * 1000);
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, "0");
         const day = String(date.getDate()).padStart(2, "0");

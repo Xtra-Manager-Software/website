@@ -10,27 +10,22 @@ export function navigate(path) {
   }
 }
 
+const routes = {
+  '/': 'home',
+  '': 'home',
+  '/500': 'server-error',
+  '/maintenance': 'maintenance',
+  '/downloads': 'downloads'
+};
+
 export function handleLocation() {
   if (typeof window === 'undefined') return;
 
   const path = window.location.pathname;
+  const routeName = routes[path] || 'not-found';
 
-  if (path === '/' || path === '') {
-    route.set('home');
-    params.set({});
-  } else if (path === '/500') {
-    route.set('server-error');
-    params.set({});
-  } else if (path === '/maintenance') {
-    route.set('maintenance');
-    params.set({});
-  } else if (path === '/downloads') {
-    route.set('downloads');
-    params.set({});
-  } else {
-    route.set('not-found');
-    params.set({});
-  }
+  route.set(routeName);
+  params.set({});
 }
 
 if (typeof window !== 'undefined') {
