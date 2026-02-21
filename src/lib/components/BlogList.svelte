@@ -14,7 +14,7 @@
                 throw new Error(`Failed to load articles: ${res.statusText}`);
             }
             const data = await res.json();
-            articles = Array.isArray(data) ? data : data.data || [];
+            articles = data.articles || [];
             articles.sort((a, b) => b.updated_at - a.updated_at);
         } catch (err) {
             errorMsg = err.message;
