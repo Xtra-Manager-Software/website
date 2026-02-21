@@ -15,7 +15,6 @@
   function goHome(e) {
     e.preventDefault();
     navigate("/");
-    window.scrollTo({ top: 0, behavior: "smooth" });
     isMenuOpen = false;
   }
 
@@ -54,39 +53,38 @@
     <div class="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2">
       <ul class="flex flex-row gap-1 font-medium text-base list-none m-0 p-0">
         <li>
-          <a
-            href="/"
+          <button
             onclick={goHome}
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
-            >Home</a
+            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
+            >Home</button
           >
         </li>
         <li>
-          <a
-            href="/#platform"
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
-            >Platform</a
+          <button
+            onclick={() => navigate("/#platform")}
+            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
+            >Platform</button
           >
         </li>
         <li>
-          <a
-            href="/#team"
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
-            >Team</a
+          <button
+            onclick={() => navigate("/#team")}
+            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
+            >Team</button
           >
         </li>
         <li>
-          <a
-            href="/downloads"
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
-            >Downloads</a
+          <button
+            onclick={() => navigate("/downloads")}
+            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
+            >Downloads</button
           >
         </li>
         <li>
-          <a
-            href="/#blog"
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5"
-            >Blog</a
+          <button
+            onclick={() => navigate("/#blog")}
+            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
+            >Blog</button
           >
         </li>
       </ul>
@@ -129,44 +127,39 @@
         class="flex flex-col w-full gap-1 text-base text-on-surface list-none m-0 p-0"
       >
         <li>
-          <a
-            href="/"
+          <button
             onclick={goHome}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
-            >Home</a
+            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            >Home</button
           >
         </li>
         <li>
-          <a
-            href="/#platform"
-            onclick={toggleMenu}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
-            >Platform</a
+          <button
+            onclick={() => { navigate("/#platform"); toggleMenu(); }}
+            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            >Platform</button
           >
         </li>
         <li>
-          <a
-            href="/#team"
-            onclick={toggleMenu}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
-            >Team</a
+          <button
+            onclick={() => { navigate("/#team"); toggleMenu(); }}
+            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            >Team</button
           >
         </li>
         <div class="h-px bg-outline/10 my-2"></div>
         <li>
-          <a
-            href="/downloads"
-            onclick={toggleMenu}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
-            >Downloads</a
+          <button
+            onclick={() => { navigate("/downloads"); toggleMenu(); }}
+            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            >Downloads</button
           >
         </li>
         <li>
-          <a
-            href="/#blog"
-            onclick={toggleMenu}
-            class="block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center"
-            >Blog</a
+          <button
+            onclick={() => { navigate("/#blog"); toggleMenu(); }}
+            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            >Blog</button
           >
         </li>
         <div class="h-px bg-outline/10 my-2"></div>

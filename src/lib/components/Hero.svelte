@@ -102,7 +102,7 @@
         rel="noopener noreferrer"
         class="w-full sm:w-auto bg-surface-container-high text-on-surface hover:bg-on-surface/5 border border-outline/10 px-6 py-2.5 text-sm md:text-base md:px-8 md:py-3.5 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
       >
-        See More
+        See More on GitHub
       </a>
     </div>
 

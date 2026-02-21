@@ -78,9 +78,6 @@
     }
 </script>
 
-<svelte:head>
-    <title>Downloads - Xtra Manager Software</title>
-</svelte:head>
 
 <section class="py-32 px-4 relative min-h-screen">
     <div class="fixed inset-0 pointer-events-none -z-10">
