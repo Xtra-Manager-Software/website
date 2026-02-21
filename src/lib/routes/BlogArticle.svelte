@@ -29,13 +29,33 @@
             if (descTag && data.description)
                 descTag.setAttribute("content", data.description);
 
-            // Handle Tiptap JSON content rendering
-            // Note: Assuming `content_json` is the direct Tiptap JSON or object having standard format
-            if (data.content_json) {
-                let tiptapContent = data.content_json;
-                // If content_json has sections and we need to map them (fallback safety checks)
-                // Adjust this if format differs, but generateHTML handles standard `{ type: "doc", content: ... }`
-                htmlContent = generateHTML(tiptapContent, [StarterKit]);
+            if (
+                data.content_json &&
+                Array.isArray(data.content_json.sections)
+            ) {
+                let generatedHtml = "";
+                data.content_json.sections.forEach((section) => {
+                    const gridClass =
+                        section.cols > 1
+                            ? `grid grid-cols-1 md:grid-cols-${section.cols} gap-6`
+                            : "w-full";
+
+                    generatedHtml += `<div class="${gridClass} mb-6">`;
+
+                    if (Array.isArray(section.contents)) {
+                        section.contents.forEach((colContent) => {
+                            // Render Tiptap content for this column
+                            const colHtml = generateHTML(colContent, [
+                                StarterKit,
+                            ]);
+                            generatedHtml += `<div>${colHtml}</div>`;
+                        });
+                    }
+
+                    generatedHtml += `</div>`;
+                });
+
+                htmlContent = generatedHtml;
             }
         } catch (err) {
             errorMsg = err.message;
