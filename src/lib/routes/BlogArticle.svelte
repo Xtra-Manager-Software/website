@@ -11,6 +11,7 @@
 
     onMount(async () => {
         try {
+            // @ts-ignore
             const slug = $params.slug;
             if (!slug) throw new Error("No slug provided");
 
@@ -112,7 +113,7 @@
                             ></span>
                             <time datetime={article.created_at}>
                                 {new Date(
-                                    article.created_at,
+                                    article.created_at * 1000,
                                 ).toLocaleDateString("id-ID", {
                                     year: "numeric",
                                     month: "long",
