@@ -14,7 +14,9 @@
             const slug = $params.slug;
             if (!slug) throw new Error("No slug provided");
 
-            const res = await fetch(`/api/articles/${slug}`);
+            const res = await fetch(
+                `https://xkmbackend.arasea.workers.dev/api/articles/${slug}`,
+            );
             if (!res.ok) {
                 throw new Error(`Failed to load article: ${res.statusText}`);
             }
