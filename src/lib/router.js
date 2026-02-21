@@ -43,11 +43,21 @@ export function handleLocation() {
 
   const path = window.location.pathname;
   const hash = window.location.hash;
-  const routeName = routes[path] || 'not-found';
+  let routeName = routes[path] || 'not-found';
+  let currentParams = {};
+
+  if (path.startsWith('/blog/')) {
+    const slug = path.split('/')[2];
+    if (slug && slug !== '') {
+      routeName = 'blog-article';
+      currentParams = { slug };
+    }
+  }
+
   const isSameRoute = currentRouteName === routeName;
 
   route.set(routeName);
-  params.set({});
+  params.set(currentParams);
 
   // Dynamic SEO Metadata
   const meta = routeMetadata[routeName] || routeMetadata['home'];
