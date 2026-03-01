@@ -82,10 +82,12 @@
 <section class="py-32 px-4 relative min-h-screen">
     <div class="fixed inset-0 pointer-events-none -z-10">
         <div
-            class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]"
+            class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-5"
+            style="background: radial-gradient(circle, var(--primary) 0%, transparent 70%);"
         ></div>
         <div
-            class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px]"
+            class="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-5"
+            style="background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);"
         ></div>
     </div>
 
@@ -162,32 +164,26 @@
                                 </div>
                             {/if}
 
-                            {#if platform.updated_at}
+                            <div class="flex items-center mb-6">
                                 <div
-                                    class="absolute top-8 right-0 p-2 text-[10px] font-medium text-on-surface-variant/70 z-10"
+                                    class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-highest text-primary group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm overflow-hidden shrink-0"
                                 >
-                                    {formatDate(platform.updated_at)}
+                                    {#if platform.logo_url}
+                                        <img
+                                            src={platform.logo_url}
+                                            alt={platform.name}
+                                            class="w-full h-full object-cover"
+                                            crossorigin="anonymous"
+                                        />
+                                    {:else if platform.icon}
+                                        <svelte:component
+                                            this={platform.icon}
+                                            class="text-2xl"
+                                        />
+                                    {:else}
+                                        <IconAndroid class="text-2xl" />
+                                    {/if}
                                 </div>
-                            {/if}
-
-                            <div
-                                class="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-highest text-primary group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm overflow-hidden"
-                            >
-                                {#if platform.logo_url}
-                                    <img
-                                        src={platform.logo_url}
-                                        alt={platform.name}
-                                        class="w-full h-full object-cover"
-                                        crossorigin="anonymous"
-                                    />
-                                {:else if platform.icon}
-                                    <svelte:component
-                                        this={platform.icon}
-                                        class="text-2xl"
-                                    />
-                                {:else}
-                                    <IconAndroid class="text-2xl" />
-                                {/if}
                             </div>
 
                             <h3
@@ -196,11 +192,24 @@
                                 {platform.name}
                             </h3>
 
-                            {#if getCategoryLabel(platform.tags)}
-                                <div
-                                    class="mb-3 text-sm font-medium text-primary"
-                                >
-                                    {getCategoryLabel(platform.tags)}
+                            <div class="flex items-center justify-between mb-4">
+                                {#if getCategoryLabel(platform.tags)}
+                                    <div class="text-sm font-medium text-primary">
+                                        {getCategoryLabel(platform.tags)}
+                                    </div>
+                                {/if}
+                                
+                                {#if platform.updated_at}
+                                    <div class="text-[10px] font-medium text-on-surface-variant/70 bg-surface-container-highest/50 px-2 py-1 rounded-md border border-outline/5 whitespace-nowrap hidden sm:block">
+                                        Updated: {formatDate(platform.updated_at)}
+                                    </div>
+                                {/if}
+                            </div>
+                            
+                            <!-- Mobile only date view so it doesn't squish with long titles on tiny screens -->
+                            {#if platform.updated_at}
+                                <div class="text-[10px] font-medium text-on-surface-variant/70 bg-surface-container-highest/50 px-2 py-1 rounded-md border border-outline/5 inline-block mb-4 sm:hidden">
+                                    Updated: {formatDate(platform.updated_at)}
                                 </div>
                             {/if}
 

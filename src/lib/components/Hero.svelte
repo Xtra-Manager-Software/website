@@ -40,7 +40,8 @@
   ></div>
   <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
     <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] bg-primary/20 rounded-full blur-[100px] md:blur-[120px] opacity-30 animate-pulse"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full opacity-10 animate-pulse"
+      style="background: radial-gradient(circle, var(--primary) 0%, transparent 70%);"
     ></div>
   </div>
 
@@ -66,7 +67,8 @@
       class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto max-w-sm sm:max-w-none opacity-0 animate-slide-up animation-delay-400 mt-4"
     >
       <a
-        href="#platform"
+        href="/platform"
+        onclick={(e) => { e.preventDefault(); navigate("/platform"); }}
         class="w-full sm:w-auto bg-primary text-on-primary hover:bg-primary/90 px-8 py-3.5 md:px-10 md:py-4 rounded-full font-bold transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 glow-primary glow-primary-hover animate-float"
       >
         Explore Project

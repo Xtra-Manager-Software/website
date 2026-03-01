@@ -348,8 +348,6 @@ body {
 
 .bg-blob {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
   opacity: 0.15;
   mix-blend-mode: screen;
   z-index: -20;
@@ -363,7 +361,7 @@ body {
 }
 
 .blob-1 {
-  background-color: var(--primary);
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
   width: 500px;
   height: 500px;
   top: -10%;
@@ -371,7 +369,7 @@ body {
 }
 
 .blob-2 {
-  background-color: var(--secondary);
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
   width: 400px;
   height: 400px;
   bottom: 20%;
@@ -381,7 +379,7 @@ body {
 }
 
 .blob-3 {
-  background-color: color-mix(in srgb, var(--primary) 50%, transparent);
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 50%, transparent) 0%, transparent 70%);
   width: 600px;
   height: 600px;
   top: 40%;

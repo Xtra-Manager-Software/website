@@ -15,7 +15,10 @@ const routes = {
   '': 'home',
   '/500': 'server-error',
   '/maintenance': 'maintenance',
-  '/downloads': 'downloads'
+  '/downloads': 'downloads',
+  '/platform': 'platform',
+  '/team': 'team',
+  '/blog': 'blog'
 };
 
 const routeMetadata = {
@@ -28,6 +31,21 @@ const routeMetadata = {
     title: 'Downloads - Xtra Manager Software',
     description: 'Download the latest tools and projects from the Xtra Manager Software community.',
     keywords: 'Downloads, Xtra Soft, Projects, Apps'
+  },
+  'platform': {
+    title: 'Platform - Xtra Manager Software',
+    description: 'Discover the Xtra Manager Software platform. Multi-platform open-source solutions.',
+    keywords: 'Platform, Xtra Manager, Multi-platform, Software'
+  },
+  'team': {
+    title: 'Team - Xtra Manager Software',
+    description: 'Meet the core team behind Xtra Manager Software.',
+    keywords: 'Team, Developers, Open Source Contributors'
+  },
+  'blog': {
+    title: 'Blog - Xtra Manager Software',
+    description: 'Stay up to date with the latest news, releases, and articles from the Xtra Manager Software team.',
+    keywords: 'Blog, News, Updates, android development'
   },
   'not-found': {
     title: '404 - Page Not Found',

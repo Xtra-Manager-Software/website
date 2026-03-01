@@ -73,10 +73,12 @@
 >
   <div class="absolute inset-0 pointer-events-none -z-10">
     <div
-      class="absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[100px]"
+      class="absolute top-1/2 right-0 -translate-y-1/2 w-[300px] h-[300px] rounded-full opacity-5"
+      style="background: radial-gradient(circle, var(--primary) 0%, transparent 70%);"
     ></div>
     <div
-      class="absolute bottom-0 left-0 w-[250px] h-[250px] bg-secondary/5 rounded-full blur-[80px]"
+      class="absolute bottom-0 left-0 w-[250px] h-[250px] rounded-full opacity-5"
+      style="background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);"
     ></div>
   </div>
 
@@ -117,42 +119,44 @@
               </div>
             {/if}
 
-            {#if platform.updated_at}
+            <div class="flex items-center gap-4 mb-6">
               <div
-                class="absolute -top-4 left-0 p-2 text-[10px] font-medium text-on-surface-variant/50 z-10"
+                class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-highest/50 border border-outline/10 text-primary group-hover:scale-110 group-hover:rotate-3 group-hover:bg-primary/20 transition-all duration-500 shadow-sm overflow-hidden shrink-0"
               >
-                {formatDate(platform.updated_at)}
+                {#if platform.logo_url}
+                  <img
+                    src={platform.logo_url}
+                    alt={platform.name}
+                    class="w-full h-full object-cover"
+                    crossorigin="anonymous"
+                  />
+                {:else if platform.icon}
+                  <svelte:component this={platform.icon} class="text-2xl" />
+                {:else}
+                  <IconAndroid class="text-2xl" />
+                {/if}
               </div>
-            {/if}
-
-            <div
-              class="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-highest/50 border border-outline/10 text-primary group-hover:scale-110 group-hover:rotate-3 group-hover:bg-primary/20 transition-all duration-500 shadow-sm overflow-hidden"
-            >
-              {#if platform.logo_url}
-                <img
-                  src={platform.logo_url}
-                  alt={platform.name}
-                  class="w-full h-full object-cover"
-                  crossorigin="anonymous"
-                />
-              {:else if platform.icon}
-                <svelte:component this={platform.icon} class="text-2xl" />
-              {:else}
-                <IconAndroid class="text-2xl" />
+              
+              {#if platform.updated_at}
+                <div class="text-[10px] font-medium text-on-surface-variant/70 bg-surface-container-highest/50 px-2 py-1 rounded-md border border-outline/5">
+                  Updated: {formatDate(platform.updated_at)}
+                </div>
               {/if}
             </div>
 
             <h3
-              class="text-2xl font-bold text-on-surface mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300 tracking-tight"
+              class="text-2xl font-bold text-on-surface mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300 tracking-tight"
             >
               {platform.name}
             </h3>
 
-            {#if getCategoryLabel(platform.tags)}
-              <div class="mb-3 text-sm font-medium text-primary">
-                {getCategoryLabel(platform.tags)}
-              </div>
-            {/if}
+            <div class="flex items-center justify-between gap-2 mb-3">
+              {#if getCategoryLabel(platform.tags)}
+                <div class="text-sm font-medium text-primary">
+                  {getCategoryLabel(platform.tags)}
+                </div>
+              {/if}
+            </div>
 
             <p
               class="text-on-surface-variant mb-6 leading-relaxed text-base whitespace-pre-line"

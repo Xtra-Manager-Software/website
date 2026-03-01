@@ -1,8 +1,5 @@
 <script>
   import Hero from "../components/Hero.svelte";
-  import Platform from "../components/Platform.svelte";
-  import Team from "../components/Team.svelte";
-  import BlogList from "../components/BlogList.svelte";
 </script>
 
 <svelte:head>
@@ -14,6 +11,3 @@
 </svelte:head>
 
 <Hero />
-<Platform />
-<Team />
-<BlogList />

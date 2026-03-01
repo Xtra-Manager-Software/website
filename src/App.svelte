@@ -33,9 +33,12 @@
 
   const routes = {
     home: () => import("./lib/routes/Home.svelte"),
+    platform: () => import("./lib/routes/Platform.svelte"),
+    team: () => import("./lib/routes/Team.svelte"),
     "server-error": () => import("./lib/routes/ServerError.svelte"),
     maintenance: () => import("./lib/routes/Maintenance.svelte"),
     downloads: () => import("./lib/routes/Downloads.svelte"),
+    blog: () => import("./lib/routes/Blog.svelte"),
     "blog-article": () => import("./lib/routes/BlogArticle.svelte"),
     "not-found": () => import("./lib/routes/NotFound.svelte"),
   };

@@ -11,14 +11,53 @@
   let isScrolled = $state(false);
   let isDarkMode = $state(true);
 
+  let activeSection = $state("");
+
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
   }
 
   function goHome(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     navigate("/");
     isMenuOpen = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    activeSection = "home";
+  }
+
+  function navigateTo(e, id) {
+    if (e) e.preventDefault();
+    isMenuOpen = false;
+    
+    // Hash routing for in-page anchors
+    if (id.startsWith("#")) {
+        activeSection = id.replace("#", "");
+        if (window.location.pathname !== "/") {
+            // Navigate home first, then scroll
+            navigate("/");
+            setTimeout(() => {
+                const el = document.getElementById(activeSection);
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+        } else {
+            // Already home, just scroll
+            const el = document.getElementById(activeSection);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+        }
+        // Use history API to subtly update URL without triggering router reload
+        window.history.pushState(null, '', `/${id}`);
+        return;
+    }
+
+    // Standard page routing updates
+    navigate(`/${id}`);
+    if (id === "") {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        activeSection = "home";
+    } else {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        activeSection = id;
+    }
   }
 
   function toggleTheme(event) {
@@ -72,8 +111,45 @@
     };
 
     window.addEventListener("scroll", handleScroll);
+
+    // Setup intersection observer for scroll spy (only for home page sections like hero, blog if they stay)
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (id === "hero" && window.location.pathname === "/") activeSection = "home";
+          else if (id === "blog" && window.location.pathname === "/") activeSection = "blog";
+        }
+      });
+    };
+
+    const observerOptions = {
+      rootMargin: "-20% 0px -60% 0px", // adjust to trigger earlier/later when scrolling
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe specific sections if they exist on the current page
+    setTimeout(() => {
+        const ids = ["hero", "blog"];
+        ids.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) observer.observe(el);
+        });
+    }, 100);
+
+    // Set active section based on current path
+    const path = window.location.pathname;
+    if (path === "/" || path === "") {
+        activeSection = "home";
+    } else {
+        activeSection = path.substring(1); // removes the leading slash
+    }
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
     };
   });
 </script>
@@ -102,46 +178,46 @@
       <ul class="flex flex-row gap-2 font-medium text-sm list-none m-0 p-0">
         <li>
           <button
-            onclick={goHome}
-            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            onclick={(e) => navigateTo(e, "")}
+            class={`relative rounded-full hover:bg-on-surface/5 transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav ${activeSection === 'home' ? 'text-primary' : 'text-on-surface hover:text-primary'}`}
             ><span class="relative z-10">Home</span>
-            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            <span class={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left duration-300 ${activeSection === 'home' ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}`}></span>
             </button
           >
         </li>
         <li>
           <button
-            onclick={() => navigate("/#platform")}
-            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            onclick={(e) => navigateTo(e, "platform")}
+            class={`relative rounded-full hover:bg-on-surface/5 transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav ${activeSection === 'platform' ? 'text-primary' : 'text-on-surface hover:text-primary'}`}
             ><span class="relative z-10">Platform</span>
-            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            <span class={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left duration-300 ${activeSection === 'platform' ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}`}></span>
             </button
           >
         </li>
         <li>
           <button
-            onclick={() => navigate("/#team")}
-            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            onclick={(e) => navigateTo(e, "team")}
+            class={`relative rounded-full hover:bg-on-surface/5 transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav ${activeSection === 'team' ? 'text-primary' : 'text-on-surface hover:text-primary'}`}
             ><span class="relative z-10">Team</span>
-            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            <span class={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left duration-300 ${activeSection === 'team' ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}`}></span>
             </button
           >
         </li>
         <li>
           <button
-            onclick={() => navigate("/downloads")}
-            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            onclick={(e) => navigateTo(e, "downloads")}
+            class={`relative rounded-full hover:bg-on-surface/5 transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav ${activeSection === 'downloads' ? 'text-primary' : 'text-on-surface hover:text-primary'}`}
             ><span class="relative z-10">Downloads</span>
-            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            <span class={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left duration-300 ${activeSection === 'downloads' ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}`}></span>
             </button
           >
         </li>
         <li>
           <button
-            onclick={() => navigate("/#blog")}
-            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            onclick={(e) => navigateTo(e, "blog")}
+            class={`relative rounded-full hover:bg-on-surface/5 transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav ${activeSection === 'blog' ? 'text-primary' : 'text-on-surface hover:text-primary'}`}
             ><span class="relative z-10">Blog</span>
-            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            <span class={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left duration-300 ${activeSection === 'blog' ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}`}></span>
             </button
           >
         </li>
@@ -190,58 +266,58 @@
 
   {#if isMenuOpen}
     <div
-      class="absolute top-16 right-4 w-52 bento-card p-3 lg:hidden animate-in slide-in-from-top-4 fade-in duration-300 z-40 origin-top-right shadow-2xl shadow-black/50"
+      class="absolute top-[4.5rem] right-0 w-48 bg-surface border border-outline-variant/20 rounded-2xl p-2 lg:hidden animate-in fade-in zoom-in-95 duration-200 z-50 origin-top-right shadow-lg shadow-black/10"
     >
       <ul
-        class="flex flex-col w-full gap-1.5 text-sm font-medium text-on-surface list-none m-0 p-0"
+        class="flex flex-col w-full gap-1 text-sm font-medium text-on-surface list-none m-0 p-0"
       >
         <li>
           <button
-            onclick={goHome}
-            class="w-full block rounded-xl hover:bg-on-surface/10 hover:text-primary active:bg-primary/20 py-2.5 px-4 transition-all duration-300 text-left cursor-pointer"
+            onclick={(e) => navigateTo(e, "")}
+            class={`w-full block rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-left cursor-pointer ${activeSection === 'home' ? 'text-primary bg-primary/10' : 'hover:text-primary active:bg-primary/20'}`}
             >Home</button
           >
         </li>
         <li>
           <button
-            onclick={() => { navigate("/#platform"); toggleMenu(); }}
-            class="w-full block rounded-xl hover:bg-on-surface/10 hover:text-primary active:bg-primary/20 py-2.5 px-4 transition-all duration-300 text-left cursor-pointer"
+            onclick={(e) => navigateTo(e, "platform")}
+            class={`w-full block rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-left cursor-pointer ${activeSection === 'platform' ? 'text-primary bg-primary/10' : 'hover:text-primary active:bg-primary/20'}`}
             >Platform</button
           >
         </li>
         <li>
           <button
-            onclick={() => { navigate("/#team"); toggleMenu(); }}
-            class="w-full block rounded-xl hover:bg-on-surface/10 hover:text-primary active:bg-primary/20 py-2.5 px-4 transition-all duration-300 text-left cursor-pointer"
+            onclick={(e) => navigateTo(e, "team")}
+            class={`w-full block rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-left cursor-pointer ${activeSection === 'team' ? 'text-primary bg-primary/10' : 'hover:text-primary active:bg-primary/20'}`}
             >Team</button
           >
         </li>
-        <div class="h-px bg-outline/10 my-2"></div>
+        <div class="h-px bg-outline/10 my-1.5"></div>
         <li>
           <button
-            onclick={() => { navigate("/downloads"); toggleMenu(); }}
-            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            onclick={(e) => navigateTo(e, "downloads")}
+            class={`w-full block rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-left cursor-pointer ${activeSection === 'downloads' ? 'text-primary bg-primary/10' : 'hover:text-primary active:bg-primary/20'}`}
             >Downloads</button
           >
         </li>
         <li>
           <button
-            onclick={() => { navigate("/#blog"); toggleMenu(); }}
-            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            onclick={(e) => navigateTo(e, "blog")}
+            class={`w-full block rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-left cursor-pointer ${activeSection === 'blog' ? 'text-primary bg-primary/10' : 'hover:text-primary active:bg-primary/20'}`}
             >Blog</button
           >
         </li>
-        <div class="h-px bg-outline/10 my-2"></div>
+        <div class="h-px bg-outline/10 my-1.5"></div>
         <li>
           <button
             onclick={(e) => { toggleTheme(e); }}
-            class="w-full flex items-center justify-center gap-3 rounded-xl hover:bg-on-surface/10 py-3 px-4 font-medium transition-colors text-on-surface cursor-pointer"
+            class="w-full flex items-center justify-center gap-2 rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-on-surface cursor-pointer"
           >
             {#if isDarkMode}
-              <IconMoon class="text-xl" />
+              <IconMoon class="text-lg" />
               <span>Light Mode</span>
             {:else}
-              <IconSun class="text-xl" />
+              <IconSun class="text-lg" />
               <span>Dark Mode</span>
             {/if}
           </button>
@@ -252,9 +328,9 @@
             target="_blank"
             rel="noopener noreferrer"
             onclick={toggleMenu}
-            class="w-full flex items-center justify-center gap-3 rounded-xl hover:bg-on-surface/10 py-3 px-4 font-medium transition-colors text-on-surface"
+            class="w-full flex items-center justify-center gap-2 rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-on-surface"
           >
-            <IconGithub class="text-xl" />
+            <IconGithub class="text-lg" />
             <span>GitHub</span>
           </a>
         </li>
