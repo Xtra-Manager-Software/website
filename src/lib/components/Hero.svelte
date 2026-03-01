@@ -30,37 +30,13 @@
     { icon: IconYaml, name: "YAML" },
     { icon: IconGithub, name: "GitHub" },
   ];
-
-  let heroSection;
-
-  onMount(() => {
-    const handleMouseMove = (e) => {
-      if (heroSection) {
-        const rect = heroSection.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        heroSection.style.setProperty("--mouse-x", `${x}px`);
-        heroSection.style.setProperty("--mouse-y", `${y}px`);
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  });
 </script>
 
 <section
-  bind:this={heroSection}
-  class="relative min-h-[90dvh] flex flex-col items-center justify-start text-center px-4 pt-32 pb-12 md:pt-40 md:pb-24 overflow-hidden select-none cursor-default"
+  class="relative flex flex-col items-center justify-center text-center px-4 pt-8 pb-8 md:pt-12 md:pb-12 select-none cursor-default min-h-[calc(100vh-6rem)] md:min-h-0"
 >
   <div
     class="absolute inset-0 -z-20 h-full w-full bg-grid-white/[0.05] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_100%,transparent_100%)]"
-  ></div>
-
-  <div
-    class="absolute inset-0 -z-10 bg-[radial-gradient(600px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),var(--primary)_0%,transparent_40%)] opacity-20 transition-opacity duration-300 pointer-events-none"
   ></div>
   <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
     <div
@@ -69,17 +45,17 @@
   </div>
 
   <div
-    class="w-full max-w-4xl mx-auto flex flex-col items-center gap-4 md:gap-8 lg:gap-10 relative z-10"
+    class="w-full max-w-4xl mx-auto flex flex-col items-center gap-3 md:gap-5 lg:gap-6 relative z-10"
   >
     <h1
-      class="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight text-on-surface animate-in slide-in-from-bottom-4 fade-in duration-700 delay-100 text-balance"
+      class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5rem] font-black tracking-tighter leading-[1.1] text-on-surface opacity-0 animate-slide-up text-balance"
     >
       Build programs that are <br class="hidden sm:block" />
-      <span class="text-primary">actually useful.</span>
+      <span class="text-gradient">actually useful.</span>
     </h1>
 
     <p
-      class="text-sm md:text-base lg:text-xl text-on-surface-variant max-w-3xl leading-relaxed animate-in slide-in-from-bottom-6 fade-in duration-700 delay-200"
+      class="text-sm md:text-base lg:text-lg text-on-surface-variant max-w-2xl leading-relaxed opacity-0 animate-slide-up animation-delay-200 px-4"
     >
       Xtra Manager Software Community focuses on designing maintainable,
       real-world solutions—not just trends. We build practical tools driven by
@@ -87,11 +63,11 @@
     </p>
 
     <div
-      class="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none animate-in slide-in-from-bottom-8 fade-in duration-700 delay-300"
+      class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto max-w-sm sm:max-w-none opacity-0 animate-slide-up animation-delay-400 mt-4"
     >
       <a
         href="#platform"
-        class="w-full sm:w-auto bg-primary text-on-primary hover:bg-primary/90 px-6 py-2.5 text-sm md:text-base md:px-8 md:py-3.5 rounded-full font-medium transition-transform hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+        class="w-full sm:w-auto bg-primary text-on-primary hover:bg-primary/90 px-8 py-3.5 md:px-10 md:py-4 rounded-full font-bold transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 glow-primary glow-primary-hover animate-float"
       >
         Explore Project
       </a>
@@ -100,79 +76,80 @@
         href="https://github.com/Xtra-Manager-Software"
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full sm:w-auto bg-surface-container-high text-on-surface hover:bg-on-surface/5 border border-outline/10 px-6 py-2.5 text-sm md:text-base md:px-8 md:py-3.5 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2"
+        class="w-full sm:w-auto glass hover:bg-surface-container/80 text-on-surface px-8 py-3.5 md:px-10 md:py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-1 inline-flex items-center justify-center gap-2"
       >
         See More on GitHub
       </a>
     </div>
 
     <div
-      class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 lg:gap-16 mt-8 md:mt-24 pt-8 border-t border-outline/10 w-full animate-in fade-in duration-1000 delay-500"
+      class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-12 mt-6 md:mt-10 pt-6 border-t border-outline/10 w-full opacity-0 animate-slide-up animation-delay-500"
     >
-      <div class="flex flex-col items-center gap-0.5 md:gap-1">
-        <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
+      <div class="flex flex-col items-center gap-1 group">
+        <span class="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br from-on-surface to-outline group-hover:from-primary group-hover:to-secondary transition-all duration-300"
           >100%</span
         >
         <span
-          class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
+          class="text-xs md:text-sm font-medium text-on-surface-variant uppercase tracking-wider whitespace-nowrap"
           >Open Source</span
         >
       </div>
-      <div class="flex flex-col items-center gap-0.5 md:gap-1">
-        <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
+      <div class="flex flex-col items-center gap-1 group">
+        <span class="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br from-on-surface to-outline group-hover:from-primary group-hover:to-secondary transition-all duration-300"
           >Community</span
         >
         <span
-          class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
+          class="text-xs md:text-sm font-medium text-on-surface-variant uppercase tracking-wider whitespace-nowrap"
           >Powered</span
         >
       </div>
-      <div class="flex flex-col items-center gap-0.5 md:gap-1">
-        <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
+      <div class="flex flex-col items-center gap-1 group">
+        <span class="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br from-on-surface to-outline group-hover:from-primary group-hover:to-secondary transition-all duration-300"
           >Multi</span
         >
         <span
-          class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
+          class="text-xs md:text-sm font-medium text-on-surface-variant uppercase tracking-wider whitespace-nowrap"
           >Platform</span
         >
       </div>
-      <div class="flex flex-col items-center gap-0.5 md:gap-1">
-        <span class="text-xl sm:text-2xl md:text-3xl font-bold text-on-surface"
+      <div class="flex flex-col items-center gap-1 group">
+        <span class="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-br from-on-surface to-outline group-hover:from-primary group-hover:to-secondary transition-all duration-300"
           >Free</span
         >
         <span
-          class="text-[10px] sm:text-xs md:text-sm text-on-surface-variant whitespace-nowrap"
+          class="text-xs md:text-sm font-medium text-on-surface-variant uppercase tracking-wider whitespace-nowrap"
           >Forever</span
         >
       </div>
     </div>
 
     <div
-      class="mt-8 md:mt-24 w-full max-w-[calc(100vw-2rem)] md:max-w-5xl overflow-hidden relative animate-in fade-in duration-1000 delay-700 mask-linear-gradient mx-auto"
+      class="mt-6 md:mt-8 w-full max-w-[calc(100vw-2rem)] md:max-w-5xl overflow-hidden relative opacity-0 animate-slide-up mask-linear-gradient mx-auto"
+      style="animation-delay: 600ms;"
     >
       <div class="flex w-max">
         <div
-          class="flex gap-8 md:gap-12 items-center animate-scroll whitespace-nowrap px-6"
+          class="flex gap-8 md:gap-16 items-center animate-scroll whitespace-nowrap px-6"
         >
           {#each techStack as tech}
             <div
-              class="flex flex-col items-center gap-2 text-on-surface-variant/50 hover:text-primary transition-colors duration-300"
+              class="flex flex-col items-center justify-center h-20 w-20 text-on-surface-variant/40 hover:text-white hover:scale-125 transition-all duration-300 drop-shadow-lg cursor-default"
               title={tech.name}
             >
-              <tech.icon class="text-3xl md:text-4xl" />
+              <tech.icon class="text-4xl md:text-5xl shrink-0" />
             </div>
           {/each}
         </div>
         <div
-          class="flex gap-8 md:gap-12 items-center animate-scroll whitespace-nowrap px-6"
+          class="flex gap-8 md:gap-16 items-center animate-scroll whitespace-nowrap px-6"
           aria-hidden="true"
         >
           {#each techStack as tech}
             <div
-              class="flex flex-col items-center gap-2 text-on-surface-variant/50 hover:text-primary transition-colors duration-300"
+              class="flex flex-col items-center justify-center h-20 w-20 text-on-surface-variant/40 hover:text-white hover:scale-125 transition-all duration-300 drop-shadow-lg cursor-default"
               title={tech.name}
             >
-              <tech.icon class="text-3xl md:text-4xl" />
+              <tech.icon class="text-4xl md:text-5xl shrink-0" />
             </div>
           {/each}
         </div>

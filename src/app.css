@@ -6,35 +6,35 @@
   --color-on-primary: var(--onPrimary);
   --color-primary-container: var(--primaryContainer);
   --color-on-primary-container: var(--onPrimaryContainer);
-  
+
   --color-secondary: var(--secondary);
   --color-on-secondary: var(--onSecondary);
   --color-secondary-container: var(--secondaryContainer);
   --color-on-secondary-container: var(--onSecondaryContainer);
-  
+
   --color-tertiary: var(--tertiary);
   --color-on-tertiary: var(--onTertiary);
   --color-tertiary-container: var(--tertiaryContainer);
   --color-on-tertiary-container: var(--onTertiaryContainer);
-  
+
   --color-error: var(--error);
   --color-on-error: var(--onError);
-  
+
   --color-background: var(--background);
   --color-on-background: var(--onBackground);
-  
+
   --color-surface: var(--surface);
   --color-on-surface: var(--onSurface);
-  
+
   --color-surface-container-lowest: var(--surfaceContainerLowest);
   --color-surface-container-low: var(--surfaceContainerLow);
   --color-surface-container: var(--surfaceContainer);
   --color-surface-container-high: var(--surfaceContainerHigh);
   --color-surface-container-highest: var(--surfaceContainerHighest);
-  
+
   --color-surface-variant: var(--surfaceVariant);
   --color-on-surface-variant: var(--onSurfaceVariant);
-  
+
   --color-outline: var(--outline);
   --color-outline-variant: var(--outlineVariant);
 }
@@ -44,38 +44,38 @@
   --onPrimary: #4f2500;
   --primaryContainer: #703800;
   --onPrimaryContainer: #ffdcc5;
-  
+
   --secondary: #e6c0a0;
   --onSecondary: #442b15;
   --secondaryContainer: #5d4129;
-  --onSecondaryContainer: #ffdcc5; 
-  
+  --onSecondaryContainer: #ffdcc5;
+
   --tertiary: #d0c88c;
   --onTertiary: #363105;
   --tertiaryContainer: #4d481a;
-  --onTertiaryContainer: #ebe4a7; 
-  
+  --onTertiaryContainer: #ebe4a7;
+
   --error: #ffb4ab;
   --onError: #690005;
-  
-  --background: #0f0a08; 
+
+  --background: #0f0a08;
   --onBackground: #efe0d9;
-  
+
   --surface: #0f0a08;
   --onSurface: #efe0d9;
 
   --surfaceContainerLowest: #140f0b;
   --surfaceContainerLow: #1d1612;
-  --surfaceContainer: #251c16;       
+  --surfaceContainer: #251c16;
   --surfaceContainerHigh: #302620;
   --surfaceContainerHighest: #3c312a;
-  
+
   --surfaceVariant: #52443c;
   --onSurfaceVariant: #d7c2b8;
-  
+
   --outline: #9f8c85;
   --outlineVariant: #52443c;
-  
+
   --brand-gradient: linear-gradient(135deg, #ffb784 0%, #e6c0a0 100%);
 }
 
@@ -93,4 +93,196 @@ body {
   background: color-mix(in srgb, var(--surfaceContainer) 80%, transparent);
   backdrop-filter: blur(12px);
   border: 1px solid color-mix(in srgb, var(--outlineVariant) 30%, transparent);
+}
+
+/* Premium Redesign Global Styles & Utilities */
+.bento-card {
+  @apply relative overflow-hidden rounded-3xl p-6 md:p-8;
+  background: linear-gradient(145deg, rgba(37, 28, 22, 0.4) 0%, rgba(20, 15, 11, 0.6) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(159, 140, 133, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border: 1px solid rgba(255, 183, 132, 0.2);
+  /* Primary color subtle border */
+  box-shadow: 0 12px 40px rgba(255, 183, 132, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.text-gradient {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-primary {
+  box-shadow: 0 0 20px rgba(255, 183, 132, 0.4);
+}
+
+.glow-primary-hover:hover {
+  box-shadow: 0 0 30px rgba(255, 183, 132, 0.6);
+}
+
+/* Custom Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.1;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Dynamic Background Gradients (Blobs) & Patterns */
+@keyframes blob-move {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  z-index: -20;
+  animation: blob-move 15s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.blob-1 {
+  background-color: var(--primary);
+  width: 500px;
+  height: 500px;
+  top: -10%;
+  left: -10%;
+}
+
+.blob-2 {
+  background-color: var(--secondary);
+  width: 400px;
+  height: 400px;
+  bottom: 20%;
+  right: -5%;
+  animation-duration: 20s;
+  animation-direction: alternate-reverse;
+}
+
+.blob-3 {
+  background-color: color-mix(in srgb, var(--primary) 50%, transparent);
+  width: 600px;
+  height: 600px;
+  top: 40%;
+  left: 30%;
+  animation-duration: 25s;
+  opacity: 0.05;
+}
+
+@keyframes grid-scroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(32px);
+    /* Matches grid size */
+  }
+}
+
+.bg-grid-animated {
+  position: absolute;
+  inset: -100% 0 -100% 0;
+  /* Bleed out so it can scroll seamlessly */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
+  z-index: -30;
+  animation: grid-scroll 20s linear infinite;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 10%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 10%, transparent 80%);
+  pointer-events: none;
 }

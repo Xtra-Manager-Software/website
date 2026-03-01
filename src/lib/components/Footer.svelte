@@ -6,9 +6,10 @@
   const currentYear = new Date().getFullYear();
 </script>
 
-<footer class="bg-surfaceContainer text-onSurface pt-12 pb-8 mt-20">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 mb-12">
+<footer class="bg-background text-onSurface pt-16 pb-12 mt-20 relative overflow-hidden border-t border-outline/10">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
       <div class="flex flex-col gap-4">
         <div class="flex flex-col gap-2">
           <span
@@ -136,18 +137,26 @@
               href="https://discord.gg/mQYVj4twYZ"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-2 text-onSurfaceVariant hover:text-primary transition-colors group"
+              class="flex items-center gap-3 text-onSurfaceVariant hover:text-white transition-colors group"
             >
               <div
-                class="p-2 rounded-full bg-surfaceContainerHigh hover:bg-onSurface/10 transition-colors"
+                class="p-2.5 rounded-xl bg-surfaceContainerHigh border border-outline/5 hover:bg-surfaceContainerHighest hover:border-primary/20 hover:text-primary transition-all duration-300"
               >
                 <IconDiscord class="text-lg" />
               </div>
-              <span class="font-medium">Discord Server</span>
+              <span class="font-medium text-sm">Discord Server</span>
             </a>
           </li>
         </ul>
       </div>
+    </div>
+  </div>
+  
+  <div class="w-full max-w-6xl mx-auto px-6 pt-8 mt-8 border-t border-outline/5 flex flex-col md:flex-row items-center justify-between text-xs text-onSurfaceVariant/50 font-medium">
+    <p>&copy; {currentYear} Xtra Manager Software. All rights reserved.</p>
+    <div class="flex items-center gap-1 mt-4 md:mt-0">
+      <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+      All systems operational
     </div>
   </div>
 </footer>

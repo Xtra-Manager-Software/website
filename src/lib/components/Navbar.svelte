@@ -39,8 +39,8 @@
       text-on-surface
       ${
         isScrolled
-          ? "bg-surface/30 backdrop-blur-[80px] shadow-lg"
-          : "bg-transparent shadow-none"
+          ? "bg-surface-container/70 backdrop-blur-xl border border-outline-variant/30 shadow-lg"
+          : "bg-surface-container/30 backdrop-blur-md border border-outline-variant/20 shadow-none"
       }
     `}
   >
@@ -51,40 +51,50 @@
     </div>
 
     <div class="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2">
-      <ul class="flex flex-row gap-1 font-medium text-base list-none m-0 p-0">
+      <ul class="flex flex-row gap-2 font-medium text-sm list-none m-0 p-0">
         <li>
           <button
             onclick={goHome}
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
-            >Home</button
+            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            ><span class="relative z-10">Home</span>
+            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            </button
           >
         </li>
         <li>
           <button
             onclick={() => navigate("/#platform")}
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
-            >Platform</button
+            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            ><span class="relative z-10">Platform</span>
+            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            </button
           >
         </li>
         <li>
           <button
             onclick={() => navigate("/#team")}
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
-            >Team</button
+            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            ><span class="relative z-10">Team</span>
+            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            </button
           >
         </li>
         <li>
           <button
             onclick={() => navigate("/downloads")}
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
-            >Downloads</button
+            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            ><span class="relative z-10">Downloads</span>
+            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            </button
           >
         </li>
         <li>
           <button
             onclick={() => navigate("/#blog")}
-            class="rounded-full hover:bg-primary/10 hover:text-primary transition-colors px-4 py-2 block xl:px-5 cursor-pointer"
-            >Blog</button
+            class="relative rounded-full hover:bg-on-surface/5 text-on-surface hover:text-primary transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav"
+            ><span class="relative z-10">Blog</span>
+            <span class="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover/nav:scale-x-100 transition-transform origin-left duration-300"></span>
+            </button
           >
         </li>
       </ul>
@@ -121,29 +131,29 @@
 
   {#if isMenuOpen}
     <div
-      class="absolute top-16 right-4 w-52 bg-surface-container-high/90 backdrop-blur-2xl rounded-2xl shadow-xl overflow-hidden lg:hidden animate-in slide-in-from-top-2 fade-in duration-200 z-40 p-2 origin-top-right"
+      class="absolute top-16 right-4 w-52 bento-card p-3 lg:hidden animate-in slide-in-from-top-4 fade-in duration-300 z-40 origin-top-right shadow-2xl shadow-black/50"
     >
       <ul
-        class="flex flex-col w-full gap-1 text-base text-on-surface list-none m-0 p-0"
+        class="flex flex-col w-full gap-1.5 text-sm font-medium text-on-surface list-none m-0 p-0"
       >
         <li>
           <button
             onclick={goHome}
-            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            class="w-full block rounded-xl hover:bg-on-surface/10 hover:text-primary active:bg-primary/20 py-2.5 px-4 transition-all duration-300 text-left cursor-pointer"
             >Home</button
           >
         </li>
         <li>
           <button
             onclick={() => { navigate("/#platform"); toggleMenu(); }}
-            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            class="w-full block rounded-xl hover:bg-on-surface/10 hover:text-primary active:bg-primary/20 py-2.5 px-4 transition-all duration-300 text-left cursor-pointer"
             >Platform</button
           >
         </li>
         <li>
           <button
             onclick={() => { navigate("/#team"); toggleMenu(); }}
-            class="w-full block rounded-xl hover:bg-primary/10 active:bg-primary/20 py-3 px-4 transition-colors text-center cursor-pointer"
+            class="w-full block rounded-xl hover:bg-on-surface/10 hover:text-primary active:bg-primary/20 py-2.5 px-4 transition-all duration-300 text-left cursor-pointer"
             >Team</button
           >
         </li>

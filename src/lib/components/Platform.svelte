@@ -69,7 +69,7 @@
 
 <section
   id="platform"
-  class="py-20 md:py-32 px-4 relative overflow-hidden select-none cursor-default"
+  class="py-20 md:py-32 px-4 relative select-none cursor-default"
 >
   <div class="absolute inset-0 pointer-events-none -z-10">
     <div
@@ -98,10 +98,11 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      {#each platforms as platform}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 opacity-0 animate-slide-up animation-delay-300">
+      {#each platforms as platform, index}
         <div
-          class="group relative flex flex-col bg-surface-container backdrop-blur-md rounded-[2rem] p-6 md:p-8 hover:bg-surface-container-high transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-2 overflow-hidden"
+          class="group bento-card flex flex-col pt-12"
+          style="animation-delay: {index * 150}ms;"
         >
           <div
             class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
@@ -110,7 +111,7 @@
           <div class="relative z-10 flex flex-col h-full">
             {#if platform.version}
               <div
-                class="absolute -top-2 -right-2 px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container border border-outline/5 text-[11px] font-bold tracking-widest uppercase shadow-sm z-20"
+                class="absolute -top-4 -right-4 px-3 py-1.5 rounded-bl-3xl rounded-tr-3xl bg-primary/20 text-primary border-b border-l border-primary/20 text-[10px] font-bold tracking-widest uppercase shadow-sm z-20 backdrop-blur-md"
               >
                 {platform.version}
               </div>
@@ -118,14 +119,14 @@
 
             {#if platform.updated_at}
               <div
-                class="absolute top-8 right-0 p-2 text-[10px] font-medium text-on-surface-variant/70 z-10"
+                class="absolute -top-4 left-0 p-2 text-[10px] font-medium text-on-surface-variant/50 z-10"
               >
                 {formatDate(platform.updated_at)}
               </div>
             {/if}
 
             <div
-              class="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-highest text-primary group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm overflow-hidden"
+              class="mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-highest/50 border border-outline/10 text-primary group-hover:scale-110 group-hover:rotate-3 group-hover:bg-primary/20 transition-all duration-500 shadow-sm overflow-hidden"
             >
               {#if platform.logo_url}
                 <img
@@ -142,7 +143,7 @@
             </div>
 
             <h3
-              class="text-2xl font-bold text-on-surface mb-1 group-hover:text-primary transition-colors duration-300 tracking-tight"
+              class="text-2xl font-bold text-on-surface mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all duration-300 tracking-tight"
             >
               {platform.name}
             </h3>
@@ -159,27 +160,27 @@
               {platform.description}
             </p>
 
-            <div class="flex flex-wrap gap-2 mb-8">
+            <div class="flex flex-wrap gap-2 mb-8 mt-4">
               {#each filterGenericTags(platform.tags) as tag}
                 <span
-                  class="px-3 py-1.5 rounded-full bg-surface-variant/50 hover:bg-surface-variant text-xs font-medium text-on-surface-variant transition-colors border border-outline/5 cursor-default"
+                  class="px-3 py-1 rounded-full bg-outline/5 border border-outline/10 text-[10px] uppercase tracking-wider font-semibold text-on-surface-variant transition-colors group-hover:bg-primary/10 group-hover:border-primary/20 group-hover:text-primary cursor-default"
                 >
                   {tag}
                 </span>
               {/each}
             </div>
 
-            <div class="flex items-center justify-end gap-3 mt-auto">
+            <div class="flex items-center justify-end gap-3 mt-auto pt-6 border-t border-outline/5">
               <a
                 href={platform.sourceLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full
-                bg-surface-container-highest hover:bg-on-surface/10
-                text-sm font-medium text-on-surface transition-all duration-300 hover:scale-105 group/btn"
+                class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl
+                bg-surface-container hover:bg-surface-container-highest border border-outline/10
+                text-sm font-medium text-on-surface transition-all duration-300 hover:-translate-y-1 group/btn"
               >
                 <IconGithub
-                  class="text-lg group-hover/btn:scale-110 transition-transform"
+                  class="text-lg group-hover/btn:scale-110 group-hover/btn:text-primary transition-all"
                 />
                 GitHub
               </a>
@@ -189,9 +190,9 @@
                   href={platform.downloadLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-primary hover:bg-primary/90 text-sm font-medium text-on-primary transition-all duration-300 group/btn"
+                  class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-primary/10 hover:bg-primary text-primary hover:text-on-primary border border-primary/20 hover:border-transparent text-sm font-medium transition-all duration-300 group/btn hover:-translate-y-1 glow-primary-hover"
                 >
-                  <span>Download</span>
+                  <span class="group-hover/btn:scale-105 transition-transform">Download</span>
                 </a>
               {/if}
             </div>
