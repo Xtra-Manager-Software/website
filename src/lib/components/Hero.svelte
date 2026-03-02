@@ -38,12 +38,7 @@
   <div
     class="absolute inset-0 -z-20 h-full w-full bg-grid-white/[0.05] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_100%,transparent_100%)]"
   ></div>
-  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-    <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full opacity-10 animate-pulse"
-      style="background: radial-gradient(circle, var(--primary) 0%, transparent 70%);"
-    ></div>
-  </div>
+
 
   <div
     class="w-full max-w-4xl mx-auto flex flex-col items-center gap-3 md:gap-5 lg:gap-6 relative z-10"
@@ -67,9 +62,8 @@
       class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto max-w-sm sm:max-w-none opacity-0 animate-slide-up animation-delay-400 mt-4"
     >
       <a
-        href="/platform"
-        onclick={(e) => { e.preventDefault(); navigate("/platform"); }}
-        class="w-full sm:w-auto bg-primary text-on-primary hover:bg-primary/90 px-8 py-3.5 md:px-10 md:py-4 rounded-full font-bold transition-all duration-300 hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 glow-primary glow-primary-hover animate-float"
+        href="#highlights"
+        class="w-full sm:w-auto bg-primary text-on-primary hover:bg-primary/90 px-8 py-3.5 md:px-10 md:py-4 rounded-full font-bold transition-all duration-300 inline-flex items-center justify-center gap-2"
       >
         Explore Project
       </a>
@@ -78,7 +72,7 @@
         href="https://github.com/Xtra-Manager-Software"
         target="_blank"
         rel="noopener noreferrer"
-        class="w-full sm:w-auto glass hover:bg-surface-container/80 text-on-surface px-8 py-3.5 md:px-10 md:py-4 rounded-full font-semibold transition-all duration-300 hover:-translate-y-1 inline-flex items-center justify-center gap-2"
+        class="w-full sm:w-auto glass hover:bg-surface-container/80 text-on-surface px-8 py-3.5 md:px-10 md:py-4 rounded-full font-semibold transition-all duration-300 inline-flex items-center justify-center gap-2"
       >
         See More on GitHub
       </a>

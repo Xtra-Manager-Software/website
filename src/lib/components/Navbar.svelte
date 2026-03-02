@@ -4,63 +4,69 @@
   import IconGithub from "~icons/simple-icons/github";
   import IconSun from "~icons/ph/sun-bold";
   import IconMoon from "~icons/ph/moon-bold";
-  import { navigate } from "../router.js";
-  import { onMount } from "svelte";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/stores";
+  import { browser } from "$app/environment";
+  import { onMount, tick } from "svelte";
 
   let isMenuOpen = $state(false);
   let isScrolled = $state(false);
   let isDarkMode = $state(true);
 
-  let activeSection = $state("");
+  let scrollActiveSection = $state("");
+  let activeSection = $derived(
+    scrollActiveSection || 
+    ($page.url.pathname === "/" ? "home" : 
+     $page.url.pathname.startsWith("/blog") ? "blog" :
+     $page.url.pathname.split("/")[1])
+  );
 
   function toggleMenu() {
     isMenuOpen = !isMenuOpen;
   }
 
-  function goHome(e) {
+  async function goHome(e) {
     if (e) e.preventDefault();
-    navigate("/");
+    await goto("/");
     isMenuOpen = false;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    activeSection = "home";
+    if (browser) window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollActiveSection = "";
   }
 
-  function navigateTo(e, id) {
+  async function navigateTo(e, id) {
     if (e) e.preventDefault();
     isMenuOpen = false;
     
     // Hash routing for in-page anchors
     if (id.startsWith("#")) {
-        activeSection = id.replace("#", "");
-        if (window.location.pathname !== "/") {
+        const targetId = id.replace("#", "");
+        if (browser && window.location.pathname !== "/") {
             // Navigate home first, then scroll
-            navigate("/");
+            await goto("/");
             setTimeout(() => {
-                const el = document.getElementById(activeSection);
+                const el = document.getElementById(targetId);
                 if (el) el.scrollIntoView({ behavior: "smooth" });
             }, 100);
-        } else {
+        } else if (browser) {
             // Already home, just scroll
-            const el = document.getElementById(activeSection);
+            const el = document.getElementById(targetId);
             if (el) el.scrollIntoView({ behavior: "smooth" });
         }
-        // Use history API to subtly update URL without triggering router reload
-        window.history.pushState(null, '', `/${id}`);
         return;
     }
 
     // Standard page routing updates
-    navigate(`/${id}`);
+    await goto(`/${id}`);
+    scrollActiveSection = "";
     if (id === "") {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        activeSection = "home";
+        if (browser) window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-        activeSection = id;
+        if (browser) window.scrollTo({ top: 0, behavior: 'instant' });
     }
   }
 
   function toggleTheme(event) {
+    if (!browser) return;
     // Determine exact click position for the circular animation origin
     const x = event.clientX;
     const y = event.clientY;
@@ -84,6 +90,7 @@
 
   function applyTheme(dark) {
     isDarkMode = dark;
+    if (!browser) return;
     if (dark) {
       document.documentElement.classList.remove("light");
       localStorage.setItem("theme", "dark");
@@ -114,11 +121,17 @@
 
     // Setup intersection observer for scroll spy (only for home page sections like hero, blog if they stay)
     const observerCallback = (entries) => {
+      if (window.location.pathname !== "/") {
+        scrollActiveSection = "";
+        return;
+      }
+
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
-          if (id === "hero" && window.location.pathname === "/") activeSection = "home";
-          else if (id === "blog" && window.location.pathname === "/") activeSection = "blog";
+          if (id === "hero") scrollActiveSection = "home";
+          else if (id === "highlights") scrollActiveSection = "highlights";
+          else if (id === "blog") scrollActiveSection = "blog";
         }
       });
     };
@@ -132,20 +145,12 @@
 
     // Observe specific sections if they exist on the current page
     setTimeout(() => {
-        const ids = ["hero", "blog"];
+        const ids = ["hero", "highlights", "blog"];
         ids.forEach((id) => {
           const el = document.getElementById(id);
           if (el) observer.observe(el);
         });
     }, 100);
-
-    // Set active section based on current path
-    const path = window.location.pathname;
-    if (path === "/" || path === "") {
-        activeSection = "home";
-    } else {
-        activeSection = path.substring(1); // removes the leading slash
-    }
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -185,15 +190,7 @@
             </button
           >
         </li>
-        <li>
-          <button
-            onclick={(e) => navigateTo(e, "platform")}
-            class={`relative rounded-full hover:bg-on-surface/5 transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav ${activeSection === 'platform' ? 'text-primary' : 'text-on-surface hover:text-primary'}`}
-            ><span class="relative z-10">Platform</span>
-            <span class={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left duration-300 ${activeSection === 'platform' ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}`}></span>
-            </button
-          >
-        </li>
+
         <li>
           <button
             onclick={(e) => navigateTo(e, "team")}
@@ -205,10 +202,10 @@
         </li>
         <li>
           <button
-            onclick={(e) => navigateTo(e, "downloads")}
-            class={`relative rounded-full hover:bg-on-surface/5 transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav ${activeSection === 'downloads' ? 'text-primary' : 'text-on-surface hover:text-primary'}`}
-            ><span class="relative z-10">Downloads</span>
-            <span class={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left duration-300 ${activeSection === 'downloads' ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}`}></span>
+            onclick={(e) => navigateTo(e, "projects")}
+            class={`relative rounded-full hover:bg-on-surface/5 transition-all px-4 py-2 block cursor-pointer overflow-hidden group/nav ${activeSection === 'projects' ? 'text-primary' : 'text-on-surface hover:text-primary'}`}
+            ><span class="relative z-10">Projects</span>
+            <span class={`absolute bottom-0 left-0 w-full h-[2px] bg-primary transition-transform origin-left duration-300 ${activeSection === 'projects' ? 'scale-x-100' : 'scale-x-0 group-hover/nav:scale-x-100'}`}></span>
             </button
           >
         </li>
@@ -278,13 +275,7 @@
             >Home</button
           >
         </li>
-        <li>
-          <button
-            onclick={(e) => navigateTo(e, "platform")}
-            class={`w-full block rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-left cursor-pointer ${activeSection === 'platform' ? 'text-primary bg-primary/10' : 'hover:text-primary active:bg-primary/20'}`}
-            >Platform</button
-          >
-        </li>
+
         <li>
           <button
             onclick={(e) => navigateTo(e, "team")}
@@ -295,9 +286,9 @@
         <div class="h-px bg-outline/10 my-1.5"></div>
         <li>
           <button
-            onclick={(e) => navigateTo(e, "downloads")}
-            class={`w-full block rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-left cursor-pointer ${activeSection === 'downloads' ? 'text-primary bg-primary/10' : 'hover:text-primary active:bg-primary/20'}`}
-            >Downloads</button
+            onclick={(e) => navigateTo(e, "projects")}
+            class={`w-full block rounded-lg hover:bg-on-surface/10 py-2 px-3 transition-colors text-left cursor-pointer ${activeSection === 'projects' ? 'text-primary bg-primary/10' : 'hover:text-primary active:bg-primary/20'}`}
+            >Projects</button
           >
         </li>
         <li>

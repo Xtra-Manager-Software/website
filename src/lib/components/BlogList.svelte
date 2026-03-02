@@ -1,32 +1,9 @@
 <script>
-    import { onMount } from "svelte";
-
-    let articles = [];
-    let isLoading = true;
-    let errorMsg = null;
-
-    onMount(async () => {
-        try {
-            const res = await fetch(
-                "https://xkmbackend.arasea.workers.dev/api/articles",
-            );
-            if (!res.ok) {
-                throw new Error(`Failed to load articles: ${res.statusText}`);
-            }
-            const data = await res.json();
-            articles = data.articles || [];
-            articles.sort((a, b) => b.updated_at - a.updated_at);
-        } catch (err) {
-            errorMsg = err.message;
-            console.error(err);
-        } finally {
-            isLoading = false;
-        }
-    });
+    let { articles = [], errorMsg = null, pagination = { page: 1, totalPages: 1 } } = $props();
 
     function formatDate(unixTimestamp) {
         if (!unixTimestamp) return "";
-        return new Date(unixTimestamp * 1000).toLocaleDateString("id-ID", {
+        return new Date(unixTimestamp * 1000).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
@@ -46,13 +23,7 @@
             </p>
         </div>
 
-        {#if isLoading}
-            <div class="flex justify-center items-center py-12">
-                <div
-                    class="w-10 h-10 border-4 border-primary/30 border-t-primary rounded-full animate-spin"
-                ></div>
-            </div>
-        {:else if errorMsg}
+        {#if errorMsg}
             <div
                 class="p-8 text-center bg-surface-container rounded-2xl border border-error"
             >
@@ -104,6 +75,31 @@
                     </a>
                 {/each}
             </div>
+            
+            <!-- Pagination Controls -->
+            {#if pagination.totalPages > 1}
+                <div class="flex justify-center items-center gap-4 mt-16 opacity-0 animate-slide-up animation-delay-300">
+                    <a 
+                        href={pagination.page > 1 ? `?page=${pagination.page - 1}` : null}
+                        class="px-5 py-2.5 rounded-full font-medium transition-all duration-300 {pagination.page > 1 ? 'bg-surface-container hover:bg-surface-container-high text-on-surface hover:text-primary shadow-sm' : 'bg-surface-container/50 text-on-surface-variant/50 cursor-not-allowed pointer-events-none'}"
+                        data-sveltekit-noscroll
+                    >
+                        Previous
+                    </a>
+                    
+                    <span class="text-sm font-medium text-on-surface-variant">
+                        Page <span class="text-on-surface">{pagination.page}</span> of <span class="text-on-surface">{pagination.totalPages}</span>
+                    </span>
+                    
+                    <a 
+                        href={pagination.page < pagination.totalPages ? `?page=${pagination.page + 1}` : null}
+                        class="px-5 py-2.5 rounded-full font-medium transition-all duration-300 {pagination.page < pagination.totalPages ? 'bg-surface-container hover:bg-surface-container-high text-on-surface hover:text-primary shadow-sm' : 'bg-surface-container/50 text-on-surface-variant/50 cursor-not-allowed pointer-events-none'}"
+                        data-sveltekit-noscroll
+                    >
+                        Next
+                    </a>
+                </div>
+            {/if}
         {/if}
     </div>
 </section>

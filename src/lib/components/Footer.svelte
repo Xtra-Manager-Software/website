@@ -29,21 +29,16 @@
         </h3>
         <ul class="flex flex-col gap-2 text-sm text-onSurfaceVariant">
           <li>
-            <a href="#features" class="hover:text-primary transition-colors"
-              >Features</a
+            <a href="/#highlights" class="hover:text-primary transition-colors"
+              >Highlights</a
             >
           </li>
           <li>
-            <a href="#platform" class="hover:text-primary transition-colors"
-              >Platform</a
+            <a href="/team" class="hover:text-primary transition-colors">Team</a
             >
           </li>
           <li>
-            <a href="#team" class="hover:text-primary transition-colors">Team</a
-            >
-          </li>
-          <li>
-            <a href="#blog" class="hover:text-primary transition-colors">Blog</a
+            <a href="/blog" class="hover:text-primary transition-colors">Blog</a
             >
           </li>
         </ul>
@@ -51,21 +46,21 @@
 
       <div class="flex flex-col gap-3">
         <h3 class="font-bold text-base text-onSurface select-none cursor-default">
-          Downloads
+          Projects
         </h3>
         <ul class="flex flex-col gap-2 text-sm text-onSurfaceVariant">
           <li>
-            <a href="/downloads" class="hover:text-primary transition-colors"
+            <a href="/projects/apps" class="hover:text-primary transition-colors"
               >Apps</a
             >
           </li>
           <li>
-            <a href="/downloads" class="hover:text-primary transition-colors"
+            <a href="/projects/modules" class="hover:text-primary transition-colors"
               >Modules</a
             >
           </li>
           <li>
-            <a href="/downloads" class="hover:text-primary transition-colors"
+            <a href="/projects/kernels" class="hover:text-primary transition-colors"
               >Kernels</a
             >
           </li>
@@ -115,21 +110,16 @@
     </div>
   </div>
   
-  <div class="w-full max-w-7xl mx-auto px-6 md:px-12 pt-6 mt-4 border-t border-outline/5 flex flex-col md:flex-row items-center justify-between text-xs text-onSurfaceVariant/50 font-medium gap-4">
-    <div class="flex flex-col md:flex-row items-center gap-1 md:gap-4 md:text-left text-center">
+  <div class="w-full max-w-7xl mx-auto px-6 md:px-12 pt-6 mt-4 border-t border-outline/5 flex flex-col items-center justify-center text-xs text-onSurfaceVariant/50 font-medium gap-2 pb-2">
+    <div class="flex flex-col md:flex-row items-center gap-1 md:gap-4 text-center">
       <p>&copy; {currentYear} Xtra Manager Software.</p>
       <span class="hidden md:inline">•</span>
       <p>
         Developed by
-        <a href="https://github.com/pavelc4" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline transition-colors">pavelc4</a>
+        <a href="https://github.com/pavelc4" target="_blank" rel="noopener noreferrer" class="text-primary underline decoration-primary/50 hover:decoration-primary transition-colors">pavelc4</a>
         &
-        <a href="https://github.com/ziyu4" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline transition-colors">ziyu4</a>
+        <a href="https://github.com/ziyu4" target="_blank" rel="noopener noreferrer" class="text-primary underline decoration-primary/50 hover:decoration-primary transition-colors">ziyu4</a>
       </p>
-    </div>
-    
-    <div class="flex items-center gap-1">
-      <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-      All systems operational
     </div>
   </div>
 </footer>
