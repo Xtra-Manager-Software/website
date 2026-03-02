@@ -32,10 +32,10 @@
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.2",
-		"@eslint/js": "^9.39.2",
+		"@eslint/js": "^10.0.1",
 		"@iconify-json/material-symbols": "^1.2.59",
 		"@iconify-json/ph": "^1.2.2",
-		"@iconify-json/simple-icons": "^1.2.71",
+		"@iconify-json/simple-icons": "^1.2.72",
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/adapter-vercel": "^6.3.3",
 		"@sveltejs/kit": "^2.50.2",
@@ -43,8 +43,8 @@
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.2.1",
-		"@types/node": "^24.11.0",
-		"eslint": "^9.39.2",
+		"@types/node": "^25.3.3",
+		"eslint": "^10.0.2",
 		"eslint-plugin-svelte": "^3.14.0",
 		"globals": "^17.3.0",
 		"publint": "^0.3.17",
@@ -61,7 +61,7 @@
 		"@tiptap/core": "^3.20.0",
 		"@tiptap/html": "^3.20.0",
 		"@tiptap/starter-kit": "^3.20.0",
-		"lucide-svelte": "^0.575.0",
+		"lucide-svelte": "^0.576.0",
 		"m3-svelte": "^7.1.0",
 		"material-symbols": "^0.40.2"
 	}
