@@ -1,9 +1,4 @@
-export const config = {
-    isr: {
-        expiration: 300
-    }
-};
-import { API_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 export async function load({ fetch, url }) {
     const page = Number(url.searchParams.get('page')) || 1;
@@ -11,7 +6,7 @@ export async function load({ fetch, url }) {
     const limit = Number(url.searchParams.get('limit')) || 9;
 
     try {
-        const response = await fetch(`${API_URL}/api/articles?page=${page}&limit=${limit}`);
+        const response = await fetch(`${env.API_URL}/api/articles?page=${page}&limit=${limit}`);
         if (!response.ok) throw new Error("Failed to fetch articles");
         const data = await response.json();
 

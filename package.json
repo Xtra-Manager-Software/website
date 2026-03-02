@@ -4,19 +4,17 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview",
+		"preview": "npm run build && wrangler pages dev",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"deploy": "npm run build && wrangler pages deploy"
 	},
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
-	],
-	"sideEffects": [
-		"**/*.css"
 	],
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -37,7 +35,7 @@
 		"@iconify-json/ph": "^1.2.2",
 		"@iconify-json/simple-icons": "^1.2.72",
 		"@sveltejs/adapter-auto": "^7.0.0",
-		"@sveltejs/adapter-vercel": "^6.3.3",
+		"@sveltejs/adapter-cloudflare": "^7.2.8",
 		"@sveltejs/kit": "^2.50.2",
 		"@sveltejs/package": "^2.5.7",
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
@@ -53,7 +51,8 @@
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.54.0",
 		"unplugin-icons": "^23.0.1",
-		"vite": "^7.3.1"
+		"vite": "^7.3.1",
+		"wrangler": "^4.69.0"
 	},
 	"dependencies": {
 		"@material-symbols-svg/react-rounded": "^0.1.22",

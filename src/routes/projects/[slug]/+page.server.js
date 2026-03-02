@@ -1,9 +1,4 @@
-export const config = {
-    isr: {
-        expiration: 300
-    }
-};
-import { API_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 export async function load({ fetch, params, parent }) {
     try {
@@ -18,7 +13,7 @@ export async function load({ fetch, params, parent }) {
             if (cat) targetCategoryName = cat.name;
         }
 
-        const response = await fetch(`${API_URL}/api/projects/category/${slug}`);
+        const response = await fetch(`${env.API_URL}/api/projects/category/${slug}`);
         if (!response.ok) {
             if (response.status === 404) {
                 // Let project grid handle empty array gracefully

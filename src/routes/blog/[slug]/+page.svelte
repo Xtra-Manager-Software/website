@@ -1,8 +1,42 @@
 <script>
+    import { generateHTML } from "@tiptap/html";
+    import StarterKit from "@tiptap/starter-kit";
+
     let { data } = $props();
     let article = $derived(data.article);
-    let htmlContent = $derived(data.htmlContent);
     let errorMsg = $derived(data.error);
+
+    let htmlContent = $derived.by(() => {
+        if (!article || !article.content_json || !Array.isArray(article.content_json.sections)) {
+            return data.htmlContent || "";
+        }
+        try {
+            const cleanContentStr = JSON.stringify(article.content_json).replace(/"Null Description"/g, '" "');
+            const cleanContent = JSON.parse(cleanContentStr);
+            let generatedHtml = "";
+            cleanContent.sections.forEach((section) => {
+                const gridClass =
+                    section.cols > 1
+                        ? `grid grid-cols-1 md:grid-cols-${section.cols} gap-6`
+                        : "w-full";
+
+                generatedHtml += `<div class="${gridClass} mb-6">`;
+
+                if (Array.isArray(section.contents)) {
+                    section.contents.forEach((colContent) => {
+                        const colHtml = generateHTML(colContent, [StarterKit]);
+                        generatedHtml += `<div>${colHtml}</div>`;
+                    });
+                }
+
+                generatedHtml += `</div>`;
+            });
+            return generatedHtml;
+        } catch (e) {
+            console.error("Failed to generate HTML:", e);
+            return "";
+        }
+    });
 </script>
 
 <svelte:head>

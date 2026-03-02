@@ -1,13 +1,8 @@
-export const config = {
-    isr: {
-        expiration: 300
-    }
-};
-import { API_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 export async function load({ fetch }) {
     try {
-        const response = await fetch(`${API_URL}/api/projects`);
+        const response = await fetch(`${env.API_URL}/api/projects`);
         if (!response.ok) throw new Error("Failed to fetch projects");
 
         const data = await response.json();

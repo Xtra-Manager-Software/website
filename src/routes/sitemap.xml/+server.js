@@ -1,13 +1,9 @@
-import { API_URL, SITE_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
-export const config = {
-    isr: {
-        expiration: 300
-    }
-};
 
-export async function GET() {
-    const baseUrl = SITE_URL; // Used absolute domain from env
+
+export async function GET({ url }) {
+    const baseUrl = url.origin; // Dynamically grab the domain serving the request
 
     const pages = [
         '',
@@ -18,8 +14,8 @@ export async function GET() {
 
     try {
         const [articlesRes, categoriesRes] = await Promise.all([
-            fetch(`${API_URL}/api/articles`).catch(() => null),
-            fetch(`${API_URL}/api/categories`).catch(() => null)
+            fetch(`${env.API_URL}/api/articles`).catch(() => null),
+            fetch(`${env.API_URL}/api/categories`).catch(() => null)
         ]);
 
         if (articlesRes && articlesRes.ok) {
@@ -56,7 +52,7 @@ export async function GET() {
     return new Response(sitemap, {
         headers: {
             'Content-Type': 'application/xml',
-            'Cache-Control': 'public, max-age=600'
+            'Cache-Control': 'public, max-age=120'
         }
     });
 }
