@@ -61,7 +61,7 @@
 		"@tiptap/html": "^3.20.0",
 		"@tiptap/starter-kit": "^3.20.0",
 		"lucide-svelte": "^0.576.0",
-		"m3-svelte": "^7.1.0",
+		"m3-svelte": "^7.1.1",
 		"material-symbols": "^0.40.2"
 	}
 }
