@@ -46,13 +46,13 @@
 		"eslint-plugin-svelte": "^3.15.2",
 		"globals": "^17.3.0",
 		"publint": "^0.3.17",
-		"svelte": "^5.53.9",
+		"svelte": "^5.53.10",
 		"svelte-check": "^4.4.5",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.57.0",
 		"unplugin-icons": "^23.0.1",
 		"vite": "^7.3.1",
-		"wrangler": "^4.71.0"
+		"wrangler": "^4.72.0"
 	},
 	"dependencies": {
 		"@material-symbols-svg/react-rounded": "^0.1.22",
