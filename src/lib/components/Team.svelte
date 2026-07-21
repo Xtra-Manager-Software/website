@@ -85,7 +85,7 @@
     </div>
 
     <!-- Single Carousel Card -->
-    <div class="bento-card relative overflow-hidden group min-h-[380px] md:min-h-[300px] flex items-center justify-center opacity-0 animate-slide-up animation-delay-300">
+    <div class="bento-card relative overflow-hidden group min-h-[480px] md:min-h-[320px] flex items-center justify-center opacity-0 animate-slide-up animation-delay-300">
       <!-- Background Gradient Effect -->
       <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
