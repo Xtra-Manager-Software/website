@@ -25,6 +25,9 @@
 			"svelte": "./dist/index.js"
 		}
 	},
+	"overrides": {
+		"vite": "$vite"
+	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"
 	},
