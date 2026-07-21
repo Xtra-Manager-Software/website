@@ -1,5 +1,6 @@
 <script>
     import AppCard from "./AppCard.svelte";
+    import PromoCard from "./PromoCard.svelte";
 
     let { projects = [], categories = [] } = $props();
 
@@ -39,9 +40,15 @@
                 <!-- Swimlane Container -->
                 <div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 px-4 gap-4 md:gap-6">
                     {#each groupProjects as project}
-                        <div class="snap-start shrink-0 w-[85vw] sm:w-[400px] md:w-[450px]">
-                            <AppCard {project} />
-                        </div>
+                        {#if slug === 'featured'}
+                            <div class="snap-start shrink-0 w-[85vw] sm:w-[500px] md:w-[600px]">
+                                <PromoCard {project} />
+                            </div>
+                        {:else}
+                            <div class="snap-start shrink-0 w-[85vw] sm:w-[400px] md:w-[450px]">
+                                <AppCard {project} />
+                            </div>
+                        {/if}
                     {/each}
                 </div>
             </section>
