@@ -31,7 +31,7 @@
     <meta name="twitter:description" content="Discover and download open-source apps, kernels, modules, and system tools created by the Xtra Manager Software Community." />
 </svelte:head>
 
-<section class="py-32 px-4 relative min-h-screen">
+<section class="pt-20 pb-12 px-4 md:px-8 relative min-h-screen">
     <div class="fixed inset-0 pointer-events-none -z-10">
         <div
             class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full opacity-5"
@@ -44,17 +44,10 @@
     </div>
 
     <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-bold text-on-surface mb-4">
-                Projects & Downloads
-            </h1>
-            <p class="text-on-surface-variant text-lg max-w-2xl mx-auto min-h-[56px] transition-all duration-300">
-                {activeDescription}
-            </p>
-        </div>
-
+        <h1 class="sr-only">Projects & Downloads</h1>
+        
         <!-- Dynamic Category Tabs -->
-        <div class="flex justify-center flex-wrap gap-2 mb-12">
+        <div class="flex justify-start flex-wrap gap-2 mb-6">
             <!-- 'All' Tab routes to /projects -->
             <a
                 href="/projects"
