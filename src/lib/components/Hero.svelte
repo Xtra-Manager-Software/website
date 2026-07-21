@@ -37,18 +37,15 @@
   {#if featuredProjects.length > 0}
     <div class="relative w-full max-w-[1200px] h-[450px] md:h-[500px] rounded-[2rem] overflow-hidden group">
       
-      <!-- Carousel Backgrounds -->
-      {#each featuredProjects as project, i}
-        {#if currentIndex === i}
-          <div transition:fade={{ duration: 800 }} class="absolute inset-0 bg-surface-container-low">
-            <!-- Simulated abstract background -->
-            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-surface to-background"></div>
-            <div class="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px_32px]"></div>
-            <!-- Gradient fading towards the right so text is readable -->
-            <div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-transparent"></div>
-          </div>
-        {/if}
-      {/each}
+      <!-- Global Carousel Background -->
+      <div class="absolute inset-0 bg-surface-container-low overflow-hidden pointer-events-none z-0">
+        <!-- Simulated abstract background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-surface to-background"></div>
+        <div class="absolute inset-0 bg-grid-white/[0.02] bg-[size:32px_32px]"></div>
+        
+        <!-- Gradient fading towards the right so text is readable -->
+        <div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-transparent"></div>
+      </div>
 
       <!-- Carousel Content -->
       {#each featuredProjects as project, i}
@@ -78,9 +75,7 @@
               
               <div class="flex items-center gap-4">
                 <!-- Generating slug dynamically -->
-                {@const slug = project.slug || project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}
-                
-                <a href="/app/{slug}" class="bg-on-surface text-surface hover:bg-on-surface/90 px-8 py-3 rounded-full font-bold transition-all hover:scale-105 shadow-lg shadow-white/5">
+                <a href="/app/{project.slug || project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')}" class="bg-on-surface text-surface hover:bg-on-surface/90 px-8 py-3 rounded-full font-bold transition-all hover:scale-105 shadow-lg shadow-white/5">
                   View Detail
                 </a>
               </div>
