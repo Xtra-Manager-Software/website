@@ -40,83 +40,83 @@
 }
 
 :root {
-  --primary: #ffb784;
-  --onPrimary: #4f2500;
-  --primaryContainer: #703800;
-  --onPrimaryContainer: #ffdcc5;
+  --primary: #fabb49;
+  --onPrimary: #432c00;
+  --primaryContainer: #604100;
+  --onPrimaryContainer: #ffdead;
 
-  --secondary: #e6c0a0;
-  --onSecondary: #442b15;
-  --secondaryContainer: #5d4129;
-  --onSecondaryContainer: #ffdcc5;
+  --secondary: #dac6a9;
+  --onSecondary: #3c2e1b;
+  --secondaryContainer: #54452f;
+  --onSecondaryContainer: #f7e2c4;
 
-  --tertiary: #d0c88c;
-  --onTertiary: #363105;
-  --tertiaryContainer: #4d481a;
-  --onTertiaryContainer: #ebe4a7;
+  --tertiary: #b2cfa7;
+  --onTertiary: #20361a;
+  --tertiaryContainer: #354d2f;
+  --onTertiaryContainer: #ceebc2;
 
   --error: #ffb4ab;
   --onError: #690005;
 
-  --background: #0f0a08;
-  --onBackground: #efe0d9;
+  --background: #1f1b16;
+  --onBackground: #eae1d9;
 
-  --surface: #0f0a08;
-  --onSurface: #efe0d9;
+  --surface: #1f1b16;
+  --onSurface: #eae1d9;
 
-  --surfaceContainerLowest: #140f0b;
-  --surfaceContainerLow: #1d1612;
-  --surfaceContainer: #251c16;
-  --surfaceContainerHigh: #302620;
-  --surfaceContainerHighest: #3c312a;
+  --surfaceContainerLowest: #14100b;
+  --surfaceContainerLow: #1f1b16;
+  --surfaceContainer: #231f1a;
+  --surfaceContainerHigh: #2e2924;
+  --surfaceContainerHighest: #39342e;
 
-  --surfaceVariant: #52443c;
-  --onSurfaceVariant: #d7c2b8;
+  --surfaceVariant: #4e4539;
+  --onSurfaceVariant: #d2c4b4;
 
-  --outline: #9f8c85;
-  --outlineVariant: #52443c;
+  --outline: #9a8e80;
+  --outlineVariant: #4e4539;
 
-  --brand-gradient: linear-gradient(135deg, #ffb784 0%, #e6c0a0 100%);
+  --brand-gradient: linear-gradient(135deg, #fabb49 0%, #dac6a9 100%);
 }
 
 .light {
-  --primary: #8d4f00;
+  --primary: #7f5700;
   --onPrimary: #ffffff;
-  --primaryContainer: #ffb784;
-  --onPrimaryContainer: #301400;
+  --primaryContainer: #ffdead;
+  --onPrimaryContainer: #281900;
 
-  --secondary: #77573d;
+  --secondary: #6d5e46;
   --onSecondary: #ffffff;
-  --secondaryContainer: #e6c0a0;
-  --onSecondaryContainer: #2a1603;
+  --secondaryContainer: #f7e2c4;
+  --onSecondaryContainer: #241a08;
 
-  --tertiary: #665f32;
+  --tertiary: #4c6544;
   --onTertiary: #ffffff;
-  --tertiaryContainer: #d0c88c;
-  --onTertiaryContainer: #201c00;
+  --tertiaryContainer: #ceebc2;
+  --onTertiaryContainer: #0a2007;
 
   --error: #ba1a1a;
   --onError: #ffffff;
 
-  --background: #fff8f5;
-  --onBackground: #221a15;
+  --background: #fffbf8;
+  --onBackground: #1f1b16;
 
-  --surface: #fff8f5;
-  --onSurface: #221a15;
+  --surface: #fffbf8;
+  --onSurface: #1f1b16;
 
   --surfaceContainerLowest: #ffffff;
-  --surfaceContainerLow: #fcf1ec;
-  --surfaceContainer: #f6ebe6;
-  --surfaceContainerHigh: #f1e5e0;
-  --surfaceContainerHighest: #ebdfda;
+  --surfaceContainerLow: #f9f2ea;
+  --surfaceContainer: #f3ece5;
+  --surfaceContainerHigh: #eee7df;
+  --surfaceContainerHighest: #e8e1da;
 
-  --surfaceVariant: #efdfd7;
-  --onSurfaceVariant: #4f443e;
+  --surfaceVariant: #eee0cf;
+  --onSurfaceVariant: #4e4539;
 
-  --outline: #81746d;
-  --outlineVariant: #d3c4bc;
+  --outline: #807567;
+  --outlineVariant: #d2c4b4;
 
-  --brand-gradient: linear-gradient(135deg, #8d4f00 0%, #77573d 100%);
+  --brand-gradient: linear-gradient(135deg, #7f5700 0%, #6d5e46 100%);
 }
 
 html,
@@ -150,29 +150,28 @@ body {
 /* Premium Redesign Global Styles & Utilities */
 .bento-card {
   @apply relative overflow-hidden rounded-3xl p-6 md:p-8;
-  background: linear-gradient(145deg, rgba(37, 28, 22, 0.4) 0%, rgba(20, 15, 11, 0.6) 100%);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(159, 140, 133, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: var(--surfaceContainer);
+  border: 1px solid color-mix(in srgb, var(--outline) 25%, transparent);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bento-card:hover {
   transform: translateY(-4px);
-  border: 1px solid rgba(255, 183, 132, 0.2);
-  /* Primary color subtle border */
-  box-shadow: 0 12px 40px rgba(255, 183, 132, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  background: var(--surfaceContainerHigh);
+  border: 1px solid color-mix(in srgb, var(--primary) 50%, transparent);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--primary) 15%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
 .light .bento-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 }
 
 .light .bento-card:hover {
-  border: 1px solid rgba(141, 79, 0, 0.3);
-  box-shadow: 0 12px 40px rgba(141, 79, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border: 1px solid color-mix(in srgb, var(--primary) 60%, transparent);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--primary) 20%, transparent), inset 0 0 0 1px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .text-gradient {
@@ -183,19 +182,19 @@ body {
 }
 
 .glow-primary {
-  box-shadow: 0 0 20px rgba(255, 183, 132, 0.4);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
 .glow-primary-hover:hover {
-  box-shadow: 0 0 30px rgba(255, 183, 132, 0.6);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 60%, transparent);
 }
 
 .light .glow-primary {
-  box-shadow: 0 0 20px rgba(141, 79, 0, 0.2);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .light .glow-primary-hover:hover {
-  box-shadow: 0 0 30px rgba(141, 79, 0, 0.35);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--primary) 35%, transparent);
 }
 
 /* Custom Animations */
