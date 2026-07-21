@@ -174,9 +174,10 @@
     `}
   >
     <div
-      class="font-bold tracking-tight px-3 py-2 md:px-4 text-base md:text-xl lg:text-2xl shrink-0 inline-flex items-center select-none cursor-default"
+      class="font-bold tracking-tight px-3 py-2 md:px-4 text-base md:text-xl lg:text-2xl shrink-0 inline-flex items-center gap-2 select-none cursor-default"
     >
-      <span class="text-primary">Xtra </span>ManagerSoftware
+      <img src="/web-app-manifest-192x192.png" alt="XMS Logo" class="w-6 h-6 md:w-8 md:h-8 object-contain rounded-md shadow-sm" />
+      <div><span class="text-primary">Xtra </span>ManagerSoftware</div>
     </div>
 
     <div class="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2">

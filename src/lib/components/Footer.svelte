@@ -133,26 +133,9 @@
     class="w-full max-w-7xl mx-auto px-6 md:px-12 pt-5 mt-4 border-t border-outline/5 pb-2"
   >
     <div
-      class="flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-onSurfaceVariant/50 font-medium text-center md:text-left"
+      class="flex flex-col md:flex-row items-center justify-center gap-2 text-xs text-onSurfaceVariant/50 font-medium text-center"
     >
       <p>&copy; {currentYear} Xtra Manager Software. All rights reserved.</p>
-      <p class="flex items-center gap-1 flex-wrap justify-center">
-        Crafted by
-        <a
-          href="https://github.com/pavelc4"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-primary hover:text-primary/70 transition-colors ml-1"
-          >pavelc4</a
-        >
-        <span class="opacity-40">&</span>
-        <a
-          href="https://github.com/ziyu4"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-primary hover:text-primary/70 transition-colors">ziyu4</a
-        >
-      </p>
     </div>
   </div>
 </footer>
