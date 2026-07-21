@@ -21,5 +21,5 @@
   <meta name="twitter:description" content="Build programs that are actually useful. Xtra Manager Software Community focuses on designing maintainable, real-world solutions." />
 </svelte:head>
 
-<Hero />
+<Hero projects={data.platforms} />
 <Platform platforms={data.platforms} categories={data.categories} error={data.error} />
