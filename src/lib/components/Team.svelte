@@ -26,13 +26,13 @@
       telegram: "https://t.me/pavellc",
     },
     {
-      name: "Ziyu4",
+      name: "aethelyn",
       realName: "Pandu",
       role: "Contributor & Backend Developer",
       bio: "Just Meow Meow",
-      avatar: "https://avatars.githubusercontent.com/ziyu4",
-      github: "https://github.com/ziyu4",
-      telegram: "https://t.me/ziyu4",
+      avatar: "https://avatars.githubusercontent.com/aethelyn",
+      github: "https://github.com/aethelyn",
+      telegram: "https://t.me/aethelyn",
     },
     {
       name: "Im-Sleepy",
@@ -176,7 +176,7 @@
           </div>
         {/key}
       </div>
-      
+
       <!-- Dots Indicator -->
       <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20">
         {#each team as _, i}
