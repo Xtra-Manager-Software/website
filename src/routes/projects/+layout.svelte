@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+    import type { LayoutData } from './$types';
     import { page } from "$app/stores";
     
-    let { data, children } = $props();
+    let { data, children }: { data: LayoutData; children: import('svelte').Snippet } = $props();
     let categories = $derived(data.categories || []);
     
     // Determine the active category tab based on the URL path

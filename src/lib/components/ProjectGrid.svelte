@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
+    import type { Platform, Category } from '$lib/types';
     import AppCard from "./AppCard.svelte";
     import PromoCard from "./PromoCard.svelte";
     import IconAndroid from "~icons/simple-icons/android";
 
-    let { projects = [], categories = [], layout = "grid" } = $props();
-
+    let { projects = [], categories = [], layout = "grid" }: { projects: Platform[]; categories: Category[]; layout: string } = $props();
 </script>
 
 {#if projects.length === 0}

@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+    import type { PageData } from './$types';
     import ProjectGrid from "$lib/components/ProjectGrid.svelte";
     
-    let { data } = $props();
+    let { data }: { data: PageData } = $props();
     let projects = $derived(data.projects || []);
     let categories = $derived(data.categories || []);
 </script>

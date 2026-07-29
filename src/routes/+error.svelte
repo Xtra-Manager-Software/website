@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { goto } from "$app/navigation";
   import IconArrowLeft from "~icons/material-symbols/arrow-back-rounded";
   import IconExplore from "~icons/material-symbols/explore-rounded";

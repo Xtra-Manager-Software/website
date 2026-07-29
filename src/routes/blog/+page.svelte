@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+  import type { PageData } from './$types';
   import BlogList from "$lib/components/BlogList.svelte";
 
-  let { data } = $props();
+  let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>

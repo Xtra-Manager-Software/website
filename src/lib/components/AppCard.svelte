@@ -1,9 +1,9 @@
-<script>
-  let { project } = $props();
+<script lang="ts">
+  import type { Platform } from '$lib/types';
+  let { project }: { project: Platform } = $props();
   
-  // Auto-generate slug from name if not present
-  const slug = project.slug || project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-  const url = `/app/${slug}`;
+  let slug = $derived(project.slug || project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''));
+  let url = $derived(`/app/${slug}`);
 </script>
 
 <a href={url} class="group flex flex-row items-center gap-4 p-3 md:p-4 rounded-3xl bg-surface-container-lowest/50 border border-outline/10 hover:border-primary/40 hover:bg-surface-container/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full backdrop-blur-sm">

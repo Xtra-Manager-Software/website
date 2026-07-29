@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
+    import type { Platform, Category } from '$lib/types';
     import AppCard from "./AppCard.svelte";
     import PromoCard from "./PromoCard.svelte";
 
-    let { projects = [], categories = [] } = $props();
+    let { projects = [], categories = [] }: { projects: Platform[]; categories: Category[] } = $props();
 
     // Group projects by category
     let groupedProjects = $derived.by(() => {

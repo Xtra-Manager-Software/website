@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
+    import type { PageData } from './$types';
     import IconGithub from "~icons/simple-icons/github";
     import IconAndroid from "~icons/simple-icons/android";
 
-    let { data } = $props();
+    let { data }: { data: PageData } = $props();
     let project = $derived(data.project);
 
-    function formatDate(unixTimestamp) {
+    function formatDate(unixTimestamp: number | undefined) {
         if (!unixTimestamp) return "";
         const date = new Date(unixTimestamp * 1000);
         return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });

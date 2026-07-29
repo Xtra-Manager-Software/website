@@ -1,7 +1,8 @@
-<script>
-    let { articles = [], errorMsg = null, pagination = { page: 1, totalPages: 1 } } = $props();
+<script lang="ts">
+    import type { Article, Pagination } from '$lib/types';
+    let { articles = [], errorMsg = null, pagination = { page: 1, totalPages: 1 } }: { articles: Article[]; errorMsg: string | null; pagination: Pagination } = $props();
 
-    function formatDate(unixTimestamp) {
+    function formatDate(unixTimestamp: number) {
         if (!unixTimestamp) return "";
         return new Date(unixTimestamp * 1000).toLocaleDateString("en-US", {
             year: "numeric",

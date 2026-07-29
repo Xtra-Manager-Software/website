@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
+  import type { Platform } from '$lib/types';
   import { onMount, onDestroy } from "svelte";
   import { fade, slide } from 'svelte/transition';
 
-  let { projects = [] } = $props();
+  let { projects = [] }: { projects: Platform[] } = $props();
   
   // We'll take up to 5 projects to feature in the carousel
   let featuredProjects = $derived(projects.slice(0, 5));

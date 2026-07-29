@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import '../app.css';
   import Navbar from "$lib/components/Navbar.svelte";
   import Footer from "$lib/components/Footer.svelte";
@@ -7,7 +7,7 @@
   import { page } from "$app/stores";
   import { onMount } from "svelte";
 
-  let { children } = $props();
+  let { children }: { children: import('svelte').Snippet } = $props();
 
   onMount(() => {
     // Remove splash screen with fade-out effect once Svelte boots

@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
+    import type { PageData } from './$types';
     import { generateHTML } from "@tiptap/html";
     import StarterKit from "@tiptap/starter-kit";
 
-    let { data } = $props();
+    let { data }: { data: PageData } = $props();
     let article = $derived(data.article);
     let errorMsg = $derived(data.error);
 

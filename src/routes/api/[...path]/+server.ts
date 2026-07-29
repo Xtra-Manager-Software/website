@@ -1,7 +1,8 @@
 import { env } from '$env/dynamic/private';
 import { error } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 
-async function handleProxy({ request, url }) {
+async function handleProxy({ request, url }: { request: Request; url: URL }) {
     const targetUrl = new URL(url.pathname, env.API_URL);
     targetUrl.search = url.search;
 
@@ -10,12 +11,12 @@ async function handleProxy({ request, url }) {
         headers.delete('host');
         headers.delete('origin');
         headers.delete('referer');
-        
-        const proxyOptions = {
+
+        const proxyOptions: RequestInit & { duplex?: string } = {
             method: request.method,
             headers,
         };
-        
+
         if (request.method !== 'GET' && request.method !== 'HEAD') {
             proxyOptions.body = request.body;
             proxyOptions.duplex = 'half';
@@ -34,9 +35,9 @@ async function handleProxy({ request, url }) {
     }
 }
 
-export const GET = handleProxy;
-export const POST = handleProxy;
-export const PUT = handleProxy;
-export const PATCH = handleProxy;
-export const DELETE = handleProxy;
-export const OPTIONS = handleProxy;
+export const GET: RequestHandler = handleProxy;
+export const POST: RequestHandler = handleProxy;
+export const PUT: RequestHandler = handleProxy;
+export const PATCH: RequestHandler = handleProxy;
+export const DELETE: RequestHandler = handleProxy;
+export const OPTIONS: RequestHandler = handleProxy;

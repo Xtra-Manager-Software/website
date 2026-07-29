@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
+  import type { Platform, Category } from '$lib/types';
   import StoreSwimlanes from "$lib/components/StoreSwimlanes.svelte";
 
-  let { platforms = [], categories = [], error = null } = $props();
+  let { platforms = [], categories = [], error = null }: { platforms: Platform[]; categories: Category[]; error: string | null } = $props();
 </script>
 
 <section id="highlights" class="py-8 md:py-16 relative select-none cursor-default max-w-[1400px] mx-auto w-full">

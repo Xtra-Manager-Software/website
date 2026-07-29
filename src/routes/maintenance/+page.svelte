@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { goto } from "$app/navigation";
   import IconConstruction from "~icons/material-symbols/construction-rounded";
   import IconBuild from "~icons/material-symbols/build-rounded";

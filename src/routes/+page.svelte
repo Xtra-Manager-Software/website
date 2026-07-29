@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
+  import type { PageData } from './$types';
   import Hero from "$lib/components/Hero.svelte";
   import Platform from "$lib/components/Platform.svelte";
 
-  let { data } = $props();
+  let { data }: { data: PageData } = $props();
 </script>
 
 <svelte:head>

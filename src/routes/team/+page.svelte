@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import TeamComponent from "$lib/components/Team.svelte";
 </script>
 

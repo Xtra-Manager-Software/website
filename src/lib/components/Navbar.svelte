@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import IconMenu from "~icons/material-symbols/menu-rounded";
   import IconClose from "~icons/material-symbols/close-rounded";
   import IconGithub from "~icons/simple-icons/github";

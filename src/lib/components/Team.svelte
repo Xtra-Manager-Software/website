@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import IconGithub from "~icons/simple-icons/github";
   import IconTelegram from "~icons/simple-icons/telegram";
   import { onMount, onDestroy } from "svelte";

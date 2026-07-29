@@ -1,10 +1,10 @@
-<script>
-  let { project } = $props();
+<script lang="ts">
+  import type { Platform } from '$lib/types';
+  let { project }: { project: Platform } = $props();
   
-  const slug = project.slug || project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
-  const url = `/app/${slug}`;
+  let slug = $derived(project.slug || project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, ''));
+  let url = $derived(`/app/${slug}`);
   
-  // Vibrant gradients to act as banners for the Promo Cards
   const gradients = [
     "from-blue-600 to-indigo-900",
     "from-emerald-500 to-teal-900",
@@ -14,8 +14,7 @@
     "from-cyan-500 to-blue-900",
     "from-amber-500 to-orange-900"
   ];
-  // Select gradient based on project name length to be somewhat consistent
-  const gradient = gradients[(project.name.length) % gradients.length];
+  let gradient = $derived(gradients[(project.name.length) % gradients.length]);
 </script>
 
 <a href={url} class="group block relative w-full h-[320px] md:h-[380px] rounded-[2rem] overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition-all duration-500 cursor-pointer">
