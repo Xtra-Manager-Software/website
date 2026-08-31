@@ -65,6 +65,6 @@
 		"@tiptap/html": "^3.29.1",
 		"@tiptap/starter-kit": "^3.29.1",
 		"lucide-svelte": "^1.0.1",
-		"material-symbols": "^0.46.0"
+		"material-symbols": "^0.47.0"
 	}
 }
